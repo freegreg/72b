@@ -1,0 +1,2 @@
+serviceClass: com.OJToolkit.client.LoginService
+path: CEAE4EA0B5E3265DB2022B70543860D9.gwt.rpc

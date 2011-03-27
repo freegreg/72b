@@ -1,0 +1,2 @@
+serviceClass: com.OJToolkit.client.coderService
+path: C5568AB9A21CCEEC8238B1FB5783FE49.gwt.rpc
