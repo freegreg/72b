@@ -1,22 +1,20 @@
 package com.OJToolkit.client;
 
-import com.OJToolkit.shared.FieldVerifier;
+import java.util.ArrayList;
+
+import com.OJToolkit.server.Coder;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DialogBox;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Hyperlink;
+
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
+
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Anchor;
@@ -25,242 +23,217 @@ import com.google.gwt.user.client.ui.Anchor;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class OJToolkit implements EntryPoint {
- /**
-  * The message displayed to the user when the server cannot be reached or
-  * returns an error.
-  */
- private static final String SERVER_ERROR = "An error occurred while "
-   + "attempting to contact the server. Please check your network "
-   + "connection and try again.";
+	/**
+	 * The message displayed to the user when the server cannot be reached or
+	 * returns an error.
+	 */
+	private static final String SERVER_ERROR = "An error occurred while "
+			+ "attempting to contact the server. Please check your network "
+			+ "connection and try again.";
 
- private final coderServiceAsync coderService = GWT.create(coderService.class);
+	private final coderServiceAsync coderService = GWT
+			.create(coderService.class);
 
- private LoginInfo loginInfo = null;
- private VerticalPanel loginPanel = new VerticalPanel();
- private Label loginLabel = new Label("Please sign in to your Google Account to access the StockWatcher application.");
- private Anchor signInLink = new Anchor("Sign In");
- private Anchor signOutLink = new Anchor("Sign Out");
- private RootPanel rootPanel = RootPanel.get();
- private Label lblNewLabel = new Label("Username:"); 
- final TextBox textBox = new TextBox();
- final Button btnRegister = new Button("Register");
- 
- /**
-  * This is the entry point method.
-  */
- public void onModuleLoad() {
-	 // Check login status using login service.
-	    LoginServiceAsync loginService = GWT.create(LoginService.class);
-	   
-	    loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
-	      public void onFailure(Throwable error) {
-	      }
+	private LoginInfo loginInfo = null;
+	private VerticalPanel loginPanel = new VerticalPanel();
+	private Label loginLabel = new Label(
+			"Please sign in to your Google Account to access the StockWatcher application.");
+	private Anchor signInLink = new Anchor("Sign In");
+	private Anchor signOutLink = new Anchor("Sign Out");
+	private RootPanel rootPanel = RootPanel.get();
+	final TextBox txtUserName = new TextBox();
+	final TextBox txtSpojUserName = new TextBox();
+	final PasswordTextBox pwdSpoj = new PasswordTextBox();
+	final Button btnRegister = new Button("register");
+	VerticalPanel verticalPanel = new VerticalPanel();
 
-	      public void onSuccess(LoginInfo result) {
-	        loginInfo = result;
-	        if(loginInfo.isLoggedIn()) {
-	          loadOJ();
-	      //    Window.alert("\n gethostpage " + GWT.getHostPageBaseURL() + "\n  Login URL  " + loginInfo.getLoginUrl() + "\n logout url    " +  loginInfo.getLogoutUrl() + "\n    nickname  " + loginInfo.getNickname() + "\n email " + loginInfo.getEmailAddress() );
-	         // rootPanel.setVisible(false);
-	        //  Registration reg = new Registration();
-	          //Hyperlink link2 = new Hyperlink("Register username", "Registration");
-	          //rootPanel.add(link2);
-	          //reg.setVisible(true);
-//	          VerticalPanel panel = new VerticalPanel();
-	         
-	
-	         // rootPanel.add(panel);
-	        } else {
-	          loadLogin();
-	        }
-	      }
-	      });
+	// final Button btnRegister = new Button("Register");
+	// private String hashPassword;
 
-	
-	    
- 
- }
- 
-	private void loadLogin() {
-		 // Assemble login panel.
-	    signInLink.setHref(loginInfo.getLoginUrl());
-	  
-	    loginPanel.add(loginLabel);
-	    loginPanel.add(signInLink);
-	  
-	    rootPanel.add(loginPanel);
-	  //  RootPanel.get("mainDiv").add(loginPanel);
-		
+	/**
+	 * This is the entry point method.
+	 */
+	public void onModuleLoad() {
+		// Check login status using login service.
+		LoginServiceAsync loginService = GWT.create(LoginService.class);
+
+		loginService.login(GWT.getHostPageBaseURL(),
+				new AsyncCallback<LoginInfo>() {
+					public void onFailure(Throwable error) {
+					}
+
+					public void onSuccess(LoginInfo result) {
+						loginInfo = result;
+						if (loginInfo.isLoggedIn()) {
+							checkRegistered();
+
+						} else {
+							loadLogin();
+						}
+					}
+				});
+
 	}
 
-private void loadOJ() {
-	
-	
-	
-	Label lblOjtoolkit = new Label("OJ-Toolkit");
-	  signOutLink.setHref(loginInfo.getLogoutUrl());
-	rootPanel.add(lblOjtoolkit, 174, 0);
-	//RootPanel.get("nicknameContainer").add(textBox)	;
-	//RootPanel.get("regButtonContainer").add(btnRegister);
-//	rootPanel.add(textBox);
-//	textBox.setFocus(true);
-//	textBox.selectAll();
-//	btnRegister.setFocus(true);
-//	rootPanel.add(btnRegister);
-	
+	private void loadLogin() {
+		// Assemble login panel.
+		signInLink.setHref(loginInfo.getLoginUrl());
 
-	//VerticalPanel simplePanel = new VerticalPanel();
+		loginPanel.add(loginLabel);
+		loginPanel.add(signInLink);
 
-	//simplePanel.setSize("429px", "215px");
-	textBox.setFocus(true);
-	textBox.selectAll();
-	
-	rootPanel.add(lblNewLabel);
-	btnRegister.setFocus(true);
-	textBox.setWidth("181px");
-	rootPanel.add(textBox);
-	rootPanel.add(signOutLink);
+		rootPanel.add(loginPanel);
+		// RootPanel.get("mainDiv").add(loginPanel);
 
-	btnRegister.addClickHandler(new ClickHandler() {
-		
-		@Override
-		public void onClick(ClickEvent event) {
-			coderService.addCoder(textBox.getText(), new AsyncCallback<Void>() {
-				
-				@Override
-				public void onSuccess(Void result) {
-					Window.alert("Success");
-					
+	}
+
+	public void checkRegistered() {
+		coderService.checkRegistered(new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onSuccess(Boolean result) {
+				// Window.alert("Registered " + result );
+				if (result == true) {
+
+					viewCoders();
+
+				} else {
+					register();
+
 				}
-				
-				@Override
-				public void onFailure(Throwable caught) {
-					// TODO Auto-generated method stub
-					Window.alert("Failure");
-					
+
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				loadLogin();
+				// TODO Auto-generated method stub
+
+			}
+		});
+	}
+
+	private void viewCoders() {
+		coderService.viewCoders(new AsyncCallback<ArrayList<CoderData>>() {
+
+			@Override
+			public void onSuccess(ArrayList<CoderData> result) {
+				Window.alert("Success_CoderData");
+				rootPanel.clear();
+
+				for (CoderData coder : result) {
+					viewCoder(coder);
 				}
-			});
-			// TODO Auto-generated method stub
-			
-		}
-	});
-	rootPanel.add(btnRegister);
-	//rootPanel.add(simplePanel, 0, 60);
-	
-	// TODO Auto-generated method stub
-	/* final Button sendButton = new Button("Send");
-	  final TextBox nameField = new TextBox();
-	  nameField.setText("GWT User");
-	  final Label errorLabel = new Label();
-	  
+				signOutLink.setHref(loginInfo.getLogoutUrl());
+				rootPanel.add(signOutLink, 181, 154);
+				// TODO Auto-generated method stub
 
-	  // We can add style names to widgets
-	  sendButton.addStyleName("sendButton");
+			}
 
-	  // Add the nameField and sendButton to the RootPanel
-	  // Use RootPanel.get() to get the entire body element
-	  RootPanel.get("nameFieldContainer").add(nameField);
-	  RootPanel.get("sendButtonContainer").add(sendButton);
-	  RootPanel.get("errorLabelContainer").add(errorLabel);
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Failure_CoderData");
+				// TODO Auto-generated method stub
 
-	  // Focus the cursor on the name field when the app loads
-	  nameField.setFocus(true);
-	  nameField.selectAll();
+			}
+		});
+	}
 
-	  // Create the popup dialog box
-	  final DialogBox dialogBox = new DialogBox();
-	  dialogBox.setText("Remote Procedure Call");
-	  dialogBox.setAnimationEnabled(true);
-	  final Button closeButton = new Button("Close");
-	  // We can set the id of a widget by accessing its Element
-	  closeButton.getElement().setId("closeButton");
-	  final Label textToServerLabel = new Label();
-	  final HTML serverResponseLabel = new HTML();
-	  VerticalPanel dialogVPanel = new VerticalPanel();
-	  dialogVPanel.addStyleName("dialogVPanel");
-	  dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
-	  dialogVPanel.add(textToServerLabel);
-	  dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
-	  dia\logVPanel.add(serverResponseLabel);
-	  dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
-	  dialogVPanel.add(closeButton);
-	  dialogVPanel.add(signOutLink);
-	  
-	  
-	  dialogBox.setWidget(dialogVPanel);
+	public void viewCoder(CoderData coder) {
 
-	  // Add a handler to close the DialogBox
-	  closeButton.addClickHandler(new ClickHandler() {
-	   public void onClick(ClickEvent event) {
-	    dialogBox.hide();
-	    sendButton.setEnabled(true);
-	    sendButton.setFocus(true);
-	   }
-	  });
+		Label lblUserData = new Label("User Data");
+		verticalPanel.add(lblUserData);
 
-	  // Create a handler for the sendButton and nameField
-	  class MyHandler implements ClickHandler, KeyUpHandler {
-	   *//**
-	    * Fired when the user clicks on the sendButton.
-	    *//*
-	   public void onClick(ClickEvent event) {
-	    sendNameToServer();
-	   }
+		Label lblNewLabel = new Label("UserID");
+		verticalPanel.add(lblNewLabel);
 
-	   *//**
-	    * Fired when the user types in the nameField.
-	    *//*
-	   public void onKeyUp(KeyUpEvent event) {
-	    if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-	     sendNameToServer();
-	    }
-	   }
+		TextBox txtUserID = new TextBox();
+		txtUserID.setText(coder.getUserID().toString());
+		verticalPanel.add(txtUserID);
 
-	   *//**
-	    * Send the name from the nameField to the server and wait for a response.
-	    *//*
-	   private void sendNameToServer() {
-	    // First, we validate the input.
-	    errorLabel.setText("");
-	    String textToServer = nameField.getText();
-	    if (!FieldVerifier.isValidName(textToServer)) {
-	     errorLabel.setText("Please enter at least four characters");
-	     return;
-	    }
+		Label lblUsername = new Label("Username");
+		verticalPanel.add(lblUsername);
 
-	    // Then, we send the input to the server.
-	    sendButton.setEnabled(false);
-	    textToServerLabel.setText(textToServer);
-	    serverResponseLabel.setText("");
-	    greetingService.greetServer(textToServer,
-	      new AsyncCallback<String>() {
-	       public void onFailure(Throwable caught) {
-	        // Show the RPC error message to the user
-	        dialogBox
-	          .setText("Remote Procedure Call - Failure");
-	        serverResponseLabel
-	          .addStyleName("serverResponseLabelError");
-	        serverResponseLabel.setHTML(SERVER_ERROR);
-	        dialogBox.center();
-	        closeButton.setFocus(true);
-	       }
+		TextBox txtUserName = new TextBox();
+		txtUserName.setText(coder.getUsername());
+		verticalPanel.add(txtUserName);
 
-	       public void onSuccess(String result) {
-	        dialogBox.setText("Remote Procedure Call");
-	        serverResponseLabel
-	          .removeStyleName("serverResponseLabelError");
-	        serverResponseLabel.setHTML(result);
-	        dialogBox.center();
-	        closeButton.setFocus(true);
-	       }
-	      });
-	   }
-	  }
+		Label lblEmail = new Label("Email");
+		verticalPanel.add(lblEmail);
 
-	  // Add a handler to send the name to the server
-	  MyHandler handler = new MyHandler();
-	  sendButton.addClickHandler(handler);
-	  nameField.addKeyUpHandler(handler);
-*/	  
-}
+		TextBox txtEmail = new TextBox();
+		txtEmail.setText(coder.getEmail());
+		verticalPanel.add(txtEmail);
+
+		Label lblSpojusername = new Label("SPOJUsername");
+		verticalPanel.add(lblSpojusername);
+
+		TextBox txtSPOJUsername = new TextBox();
+		txtSPOJUsername.setText(coder.getSPOJUsername());
+		verticalPanel.add(txtSPOJUsername);
+
+		Label lblSpojpassword = new Label("SPOJPassword");
+		verticalPanel.add(lblSpojpassword);
+
+		TextBox txtSpojPassword = new TextBox();
+		txtSpojPassword.setText(coder.getSPOJPassword());
+		verticalPanel.add(txtSpojPassword);
+
+		rootPanel.add(verticalPanel);
+	}
+
+	private void register() {
+
+		Label lblOjtoolkit = new Label("OJ-Toolkit");
+
+		rootPanel.add(lblOjtoolkit, 174, 0);
+
+		RootPanel rootPanel = RootPanel.get();
+
+		Label lblUserName = new Label("Username");
+		rootPanel.add(lblUserName, 35, 34);
+
+		Label lblSpojUserName = new Label("Spoj Username");
+		rootPanel.add(lblSpojUserName, 35, 74);
+
+		Label lblSpojPassword = new Label("Spoj Password");
+		rootPanel.add(lblSpojPassword, 35, 114);
+
+		rootPanel.add(txtUserName, 181, 33);
+
+		rootPanel.add(txtSpojUserName, 181, 74);
+
+		rootPanel.add(pwdSpoj, 181, 114);
+		rootPanel.add(btnRegister, 150, 154);
+		signOutLink.setHref(loginInfo.getLogoutUrl());
+		rootPanel.add(signOutLink, 181, 154);
+
+		btnRegister.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				coderService.addCoder(txtUserName.getText(),
+						txtSpojUserName.getText(), pwdSpoj.getText(),
+						new AsyncCallback<Void>() {
+
+							@Override
+							public void onSuccess(Void result) {
+								Window.alert("Success");
+
+							}
+
+							@Override
+							public void onFailure(Throwable caught) {
+								// TODO Auto-generated method stub
+								Window.alert("Failure");
+
+							}
+						});
+				// TODO Auto-generated method stub
+
+			}
+		});
+		rootPanel.add(btnRegister);
+
+	}
 }

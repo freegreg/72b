@@ -1,54 +1,52 @@
-package com.OJToolkit.server;
+package com.OJToolkit.client;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import java.io.Serializable;
 
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class Coder {
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+@SuppressWarnings("serial")
+public class CoderData implements Serializable {
+
+	public CoderData() {
+
+	}
+
+	public CoderData(Long userID, String username, String email,
+			String sPOJUsername, String sPOJPassword) {
+		this.userID = userID;
+		this.username = username;
+		this.email = email;
+		SPOJUsername = sPOJUsername;
+		SPOJPassword = sPOJPassword;
+	}
+
 	private Long userID;
-	
-	@Persistent
-	private String username;
-	
-	@Persistent
-	private String email;
-	
-	@Persistent
-	private String SPOJUsername;
-	
-	@Persistent
-	private String SPOJPassword;
 
+	private String username;
+
+	private String email;
+
+	private String SPOJUsername;
+
+	private String SPOJPassword;
 
 	public Long getUserID() {
 		return userID;
 	}
-	
 
 	public String getSPOJUsername() {
 		return SPOJUsername;
 	}
 
-
 	public void setSPOJUsername(String sPOJUsername) {
 		SPOJUsername = sPOJUsername;
 	}
-
 
 	public String getSPOJPassword() {
 		return SPOJPassword;
 	}
 
-
 	public void setSPOJPassword(String sPOJPassword) {
 		SPOJPassword = sPOJPassword;
 	}
-
 
 	public void setUserID(Long userID) {
 		this.userID = userID;
@@ -70,17 +68,4 @@ public class Coder {
 		this.email = email;
 	}
 
-
-
-
-
-
-	public Coder(String username, String email, String SPOJUsername,String SPOJPassword) {
-		this.username = username;
-		this.email = email;
-		this.SPOJUsername = SPOJUsername;
-		this.SPOJPassword = SPOJPassword;
-	}
-	
-	
 }
