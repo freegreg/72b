@@ -22,7 +22,7 @@ public class FrmRegistration  extends Content{
 		 TextBox txtUsername = new TextBox();
 		absolutePanel.add(txtUsername, 166, 51);
 		txtUsername.setSize("141px", "16px");
-		
+			
 		Label lblSpojUsername = new Label("SPOJ Username");
 		absolutePanel.add(lblSpojUsername, 41, 94);
 		

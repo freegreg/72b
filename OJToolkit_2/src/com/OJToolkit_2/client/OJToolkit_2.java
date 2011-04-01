@@ -2,22 +2,15 @@ package com.OJToolkit_2.client;
 
 import java.util.ArrayList;
 
-import org.apache.http.params.CoreConnectionPNames;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
-import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -36,9 +29,10 @@ public class OJToolkit_2 implements EntryPoint {
 	 * service.
 	 */
 	private final coderServiceAsync coderService = GWT
-	.create(coderService.class);
-	
-	private final LoginServiceAsync loginService = GWT.create(LoginService.class);
+			.create(coderService.class);
+
+	private final LoginServiceAsync loginService = GWT
+			.create(LoginService.class);
 
 	private LoginInfo loginInfo;
 	private AbsolutePanel core;
@@ -48,78 +42,95 @@ public class OJToolkit_2 implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		RootPanel rootPanel = RootPanel.get();
+
+		/*
+		 * AbsolutePanel absolutePanel = new AbsolutePanel();
+		 * rootPanel.add(absolutePanel, 0, 0); absolutePanel.setSize("100%",
+		 * "100%");
+		 * 
+		 * VerticalPanel header = new VerticalPanel(); absolutePanel.add(header,
+		 * 0, 0); header.setSize("100%", "20%");
+		 * 
+		 * AbsolutePanel left = new AbsolutePanel(); absolutePanel.add(left, 0,
+		 * 69); left.setSize("20%", "80%");
+		 * 
+		 * core = new AbsolutePanel(); absolutePanel.add(core, 99, 69);
+		 * core.setVisible(true); core.setSize("80%", "80%");
+		 */// core.add(new FrmRegistration());
+
+		// core.add(new FrmRegistration());
+
+		// core.clear();
+
+		// core.add(new FrmLogin("fdsf"));
+		/*
+		 * Label loginLabel = new Label(
+		 * "Please sign in to your Google Account to access the OJToolkit application."
+		 * );
+		 * 
+		 * Anchor signInLink = new Anchor("Sign In");
+		 */
+		DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
+		dockLayoutPanel.setSize("100%","100%");
+		rootPanel.add(dockLayoutPanel, 0, 0);
+
+		TestNorth tn = new TestNorth();
+		dockLayoutPanel.addNorth(tn, 10);
+		tn.setSize("100%", "100%");
+		
+		TestWestUi tw = new TestWestUi();
+		dockLayoutPanel.addWest(tw, 15);
+		tw.setSize("100%", "100%");
 		
 
-		/*AbsolutePanel absolutePanel = new AbsolutePanel();
-		rootPanel.add(absolutePanel, 0, 0);
-		absolutePanel.setSize("100%", "100%");
+//		FrmRegistration fReg = new FrmRegistration();
+//		dockLayoutPanel.add(fReg);
+//		fReg.setSize("100%", "100%");
+		
+		FrmLogin flg = new FrmLogin("AmrSamir");
+		dockLayoutPanel.add(flg);
+		flg.setSize("100%", "100%");
 
-		VerticalPanel header = new VerticalPanel();
-		absolutePanel.add(header, 0, 0);
-		header.setSize("100%", "20%");
+	//	dockLayoutPanel.remove(tw);
+		
+		
+//		Label lblLab = new Label("West Label");
+//		dockLayoutPanel.addWest(lblLab, 10.5);
+//		lblLab.setSize("100%", "100%");
+	
+		// initWidget(dockLayoutPanel);
+/*
+		Label lblLabelNorth = new Label("Label North");
+		dockLayoutPanel.addNorth(lblLabelNorth, 7.5);
+		lblLabelNorth.setSize("100%", "100%");
+		
+		Label lblLab = new Label("West");
+		dockLayoutPanel.addWest(lblLab, 7.5);
+		lblLab.setSize("100%", "100%");
 
-		AbsolutePanel left = new AbsolutePanel();
-		absolutePanel.add(left, 0, 69);
-		left.setSize("20%", "80%");
+		Label lblEast = new Label("East");
+		dockLayoutPanel.addEast(lblEast, -14.2);
+		lblEast.setSize("100%", "100%");
 
-	    core = new AbsolutePanel();
-		absolutePanel.add(core, 99, 69);
-		core.setVisible(true);
-		core.setSize("80%", "80%");
-*/		//core.add(new FrmRegistration());
-		
-	//	core.add(new FrmRegistration());
-		
-		//core.clear();
-		
-//		core.add(new FrmLogin("fdsf"));
-/*		Label loginLabel = new Label(
-		"Please sign in to your Google Account to access the OJToolkit application.");
-		
-Anchor signInLink = new Anchor("Sign In");
+		Label lblCenter = new Label("Center");
+		dockLayoutPanel.add(lblCenter);
+		lblCenter.setSize("100%", "100%");
 */
-DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
-//initWidget(dockLayoutPanel);
-
-Label lblLabelNorth = new Label("Label North");
-dockLayoutPanel.addNorth(lblLabelNorth, 7.5);
-
-Label lblLab = new Label("West");
-dockLayoutPanel.addWest(lblLab, 7.5);
-
-
-
-Label lblEast = new Label("East");
-dockLayoutPanel.addEast(lblEast, -14.2);
-
-Label lblCenter = new Label("Center");
-dockLayoutPanel.add(lblCenter);
-rootPanel.add(dockLayoutPanel);
-
-		
-		
-		
-		/*loginService.login(GWT.getHostPageBaseURL(),
-				new AsyncCallback<LoginInfo>() {
-					public void onFailure(Throwable error) {
-					}
-					
-					
-					public void onSuccess(LoginInfo result) {
-						loginInfo = result;
-						if (result.isLoggedIn()) {
-							checkRegistered();
-
-						} else {
-							// core.clear();
-							core.add(new FrmLogin(result.getLoginUrl()));
-						}
-					}
-				});*/
-
-
+		/*
+		 * loginService.login(GWT.getHostPageBaseURL(), new
+		 * AsyncCallback<LoginInfo>() { public void onFailure(Throwable error) {
+		 * }
+		 * 
+		 * 
+		 * public void onSuccess(LoginInfo result) { loginInfo = result; if
+		 * (result.isLoggedIn()) { checkRegistered();
+		 * 
+		 * } else { // core.clear(); core.add(new
+		 * FrmLogin(result.getLoginUrl())); } } });
+		 */
 
 	}
+
 	public void checkRegistered() {
 		coderService.checkRegistered(new AsyncCallback<Boolean>() {
 
@@ -153,11 +164,11 @@ rootPanel.add(dockLayoutPanel);
 
 			@Override
 			public void onSuccess(ArrayList<CoderData> result) {
-				//Window.alert("Success_CoderData");
+				// Window.alert("Success_CoderData");
 				// core.clear();
 				core.add(new FrmViewUsers(result));
-//				signOutLink.setHref(loginInfo.getLogoutUrl());
-//				rootPanel.add(signOutLink);
+				// signOutLink.setHref(loginInfo.getLogoutUrl());
+				// rootPanel.add(signOutLink);
 				// TODO Auto-generated method stub
 
 			}
@@ -170,6 +181,5 @@ rootPanel.add(dockLayoutPanel);
 			}
 		});
 	}
-
 
 }
