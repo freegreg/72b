@@ -1,12 +1,12 @@
 package com.OJToolkit_2.client;
+
 import com.google.gwt.user.client.ui.AbsolutePanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.TextBox;
 
-
-public class FrmRegistration extends Content{
+public class FrmRegistration  extends Content{
 
 	public FrmRegistration() {
 		
@@ -14,7 +14,7 @@ public class FrmRegistration extends Content{
 		initWidget(absolutePanel);
 		
 		Label lblUsername = new Label("FrmRegistration");
-		absolutePanel.add(lblUsername, 139, 10);
+		absolutePanel.add(lblUsername);
 		
 		Label lblUsername_1 = new Label("Username");
 		absolutePanel.add(lblUsername_1, 41, 51);
@@ -40,6 +40,10 @@ public class FrmRegistration extends Content{
 		Button btnRegister = new Button("Register");
 		absolutePanel.add(btnRegister, 126, 173);
 		btnRegister.setSize("100px", "28px");
-				// TODO Auto-generated constructor stub
+
+		
+		// TODO Auto-generated constructor stub
 	}
+	
+
 }

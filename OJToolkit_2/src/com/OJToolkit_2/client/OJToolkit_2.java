@@ -6,12 +6,16 @@ import org.apache.http.params.CoreConnectionPNames;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -44,8 +48,9 @@ public class OJToolkit_2 implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		RootPanel rootPanel = RootPanel.get();
+		
 
-		AbsolutePanel absolutePanel = new AbsolutePanel();
+		/*AbsolutePanel absolutePanel = new AbsolutePanel();
 		rootPanel.add(absolutePanel, 0, 0);
 		absolutePanel.setSize("100%", "100%");
 
@@ -59,15 +64,38 @@ public class OJToolkit_2 implements EntryPoint {
 
 	    core = new AbsolutePanel();
 		absolutePanel.add(core, 99, 69);
+		core.setVisible(true);
 		core.setSize("80%", "80%");
-		//core.add(new FrmRegistration());
+*/		//core.add(new FrmRegistration());
 		
-		core.add(new FrmRegistration());
+	//	core.add(new FrmRegistration());
 		
 		//core.clear();
 		
-		//core.add(new FrmLogin("fdsf"));
+//		core.add(new FrmLogin("fdsf"));
+/*		Label loginLabel = new Label(
+		"Please sign in to your Google Account to access the OJToolkit application.");
 		
+Anchor signInLink = new Anchor("Sign In");
+*/
+DockLayoutPanel dockLayoutPanel = new DockLayoutPanel(Unit.EM);
+//initWidget(dockLayoutPanel);
+
+Label lblLabelNorth = new Label("Label North");
+dockLayoutPanel.addNorth(lblLabelNorth, 7.5);
+
+Label lblLab = new Label("West");
+dockLayoutPanel.addWest(lblLab, 7.5);
+
+
+
+Label lblEast = new Label("East");
+dockLayoutPanel.addEast(lblEast, -14.2);
+
+Label lblCenter = new Label("Center");
+dockLayoutPanel.add(lblCenter);
+rootPanel.add(dockLayoutPanel);
+
 		
 		
 		

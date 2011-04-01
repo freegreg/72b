@@ -1,7 +1,9 @@
 package com.OJToolkit_2.client;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 
 public class FrmLogin extends Content {
@@ -16,6 +18,10 @@ public class FrmLogin extends Content {
 		signInLink.setHref(loginURL);
 		absolutePanel.add(loginLabel);
 		absolutePanel.add(signInLink);
+		
+		
+		
+		
 
 		// TODO Auto-generated constructor stub
 	}
