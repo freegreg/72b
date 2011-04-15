@@ -1,17 +1,26 @@
-package JudgesEngine;
+package Engine;
 
 public class ProblemSpoj
 {
 	private String url;
-	private double accP;
-	private int noUser;
 	private String type;
-	
-	public ProblemSpoj(String u , double a , int n)
+	private String problemCode;
+	private String problemName;
+	public String getProblemCode() {
+		return problemCode;
+	}
+	public void setProblemCode(String problemCode) {
+		this.problemCode = problemCode;
+	}
+	public String getProblemName() {
+		return problemName;
+	}
+	public void setProblemName(String problemName) {
+		this.problemName = problemName;
+	}
+	public ProblemSpoj(String u)
 	{
 		url = u;
-		accP = a;
-		noUser = n;
 	}
 	ProblemSpoj(){}
 	public void setType(String t)
@@ -28,17 +37,4 @@ public class ProblemSpoj
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public double getAccP() {
-		return accP;
-	}
-	public void setAccP(double accP) {
-		this.accP = accP;
-	}
-	public int getNoUser() {
-		return noUser;
-	}
-	public void setNoUser(int noUser) {
-		this.noUser = noUser;
-	}
-	
 }

@@ -1,14 +1,17 @@
-package JudgesEngine;
+package Engine;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.Set;
 
 
@@ -278,58 +281,39 @@ public class Engine {
 				    		String tem = "";
 			    			if(k == 3){
 			    				int in2 = line.indexOf("\"");
-			    	//			System.out.println("ind = " + in2);
-			    	//			System.out.println(line);
 			    				for(int j = in2+1 ; line.charAt(j) != '\"' ; j ++){
 			    					tem += line.charAt(j);
-			    				//	System.out.println("ASDF");
-			    				//	System.out.println(tem);
 			    				}
 			    				p.setUrl("https://spoj.pl" + tem);
-			    				ii++;
-			    			}
-			    			else if(k == 6){
-			    				int t = 0;
-			    				for(int j = 0 ; j < line.length() ; j ++){
-			    					if(line.charAt(j) == '\"')
-			    						t ++;
-			    					if(t == 4){
-			    						for(int jj = j+2 ; ; jj++){
-			    							if(line.charAt(jj) >= '0' && line.charAt(jj) <= '9' )
-			    								tem +=line.charAt(jj);
-			    							else
-			    								break;
-			    						}
-			    						break;
-			    					}
+			    				int in3 = line.indexOf("<b>");
+			    				tem = "";
+			    				for(int j = in3+3 ; j < line.length() &&line.charAt(j) != '<' ; j++){
+			    					tem += line.charAt(j);
 			    				}
-			    				ii++;
-			    				p.setNoUser(Integer.parseInt(tem));
-			    			}
-			    			else if(k == 7){
-			    				int t = 0;
-			    				for(int j = 0 ; j < line.length() ; j ++){
-			    					if(line.charAt(j) == '\"')
-			    						t ++;
-			    					if(t == 4){
-			    						for(int jj = j+2 ; ; jj++){
-			    							if(line.charAt(jj) == '.' || (line.charAt(jj) >= '0' && line.charAt(jj) <= '9' ))
-			    								tem +=line.charAt(jj);
-			    							else
-			    								break;
-			    						}
-			    						break;
-			    					}
-			    				}
-			    				ii++;
-			    				p.setAccP(Double.parseDouble(tem));
+			    				p.setProblemName(tem);
+			    				break;
 			    			}
 			    		}
 			    		nop++;
 			    		p.setType(arr[i]);
+			    		int t = 0;
+			    		String tem = "";
+			    		for(int l = 0 ; l < p.getUrl().length() ; l ++)
+			    		{
+			    			if(t == 4 &&p.getUrl().charAt(l) != '/' ){
+			    				tem += p.getUrl().charAt(l);
+			    			}
+			    			else if(t > 4){
+			    				break;
+			    			}
+			    			if(p.getUrl().charAt(l) == '/')
+			    				t ++;
+			    		}
+			    		p.setProblemCode(tem);
 			    		ret.add(p);
 			    	}
 			    }
+			//`    System.out.println(st);
 		    	if(nop != 50)	
 		    		break;
 			}
@@ -384,16 +368,26 @@ public class Engine {
 		conn.disconnect();
 		return ret;
 	}
-	public static void main(String[] args) throws IOException {
-		String arr[] = {"Users accepted" , "Submissions", "Accepted" , "Wrong Answer" , "Compile Error" , "Runtime Error" ,
-		"Time Limit Exceeded"};
-		
-		HashMap<String, Integer> ret = getProblemInfoSpoj("TEST");
-		Set keys = ret.keySet();
-		Iterator keyIter = keys.iterator();
-		for (int i = 0; keyIter.hasNext(); i++) {
-			Object key = keyIter.next();
-			System.out.println(key + " " + ret.get(key));
+	public static void main(String[] args) throws Exception {
+//		HashMap<String, String> h = new HashMap<String, String>();
+
+	//	 * 	"login_user"	-->	user name ,
+	//	 * 	"password"	-->	user's password ,
+	//	 * 	"problemcode"	-->	problem code/id ,
+	//	 * 	"file"		-->	submitted code , 
+	//	 * 	"lang"		-->	language id , and it must be like the spoj's one.
+//		h.put("login_user", "omar_90");
+//		h.put("password", "OmarEl-Mohandes");
+//		h.put("problemcode", "TEST");
+//		h.put("file", "");
+//		h.put("lang", "40");
+//		submitSpoj(h);
+		ArrayList<ProblemSpoj> re = getAllProblemsSpoj();
+		PrintWriter p = new PrintWriter(new File("Problems.txt"));
+		for(int i = 0 ; i < re.size() ; i ++){
+			p.write("\"" + re.get(i).getProblemCode()+"\"" + "  " +"\"" +re.get(i).getProblemName() +"\"" +"  " +"\""+ re.get(i).getType()+"\"" + "  " + "\""+re.get(i).getUrl()+"\""+"\n");
 		}
+		p.flush();
+		p.close();
 	}
 }
