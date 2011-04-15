@@ -261,7 +261,7 @@ public class Engine {
 		for(int i = 0 ; i < arr.length ; i ++){
 
 			for(int st = 0 ; ; st +=50){
-				URL siteUrl = new URL("https://www.spoj.pl/problems/" + arr[i] + "sort=0,start="+st);
+				URL siteUrl = new URL("http://www.spoj.pl/problems/" + arr[i] + "/sort=0,start="+st);
 				HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 				conn.setRequestMethod("POST");
 				conn.setDoOutput(true);
@@ -313,7 +313,7 @@ public class Engine {
 			    		ret.add(p);
 			    	}
 			    }
-			//`    System.out.println(st);
+			    System.out.println(st + "|" + ret.size());
 		    	if(nop != 50)	
 		    		break;
 			}
