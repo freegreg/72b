@@ -23,11 +23,12 @@ public interface Judge {
 	public void submitProblem(String coderId , String password , String problemId , String languageId , String code) throws IOException;
 	
 	/**
-	 * 
+	 * @param coderId : The ID of the coder.
+	 * @param password : The password of the user.
 	 * @return Instance of type Submission of the last submitted problem.
 	 * @throws Exception 
 	 */
-	public Submission getLastSubmission(String coderId) throws Exception;
+	public Submission getLastSubmission(String coderId , String password) throws Exception;
 	
 	/**
 	 * 

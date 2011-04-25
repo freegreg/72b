@@ -1,4 +1,4 @@
-package Engine;
+	package Engine;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -8,10 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-/**
- * @author OmarEl-Mohandes
- *
- */
+
 public class SPOJ implements Judge{
 
 	@Override
@@ -82,7 +79,7 @@ public class SPOJ implements Judge{
 	}
 
 	@Override
-	public Submission getLastSubmission(String coderId) throws Exception {
+	public Submission getLastSubmission(String coderId , String pass) throws Exception {
 		HashMap<String, String>ret = new HashMap<String, String>();
 		URL siteUrl = new URL("https://www.spoj.pl/status/"+coderId+"/");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
@@ -95,7 +92,7 @@ public class SPOJ implements Judge{
 		out.close();
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String tem , teto = "<td class=\"status_sm\">" ;
-		String [] arr = {"DATE" , "PROBLEM" ,"RESULT" , "TIME" , "MEM"};
+		String [] arr = {"DATE" , "PROBLEM" ,"RESULT" , "TIME" , "MEM" , "LANG"};
 		int ind = 0 , ln = 1 ;
 		boolean flag = false;
         while((tem = in.readLine()) != null && ind != arr.length)
@@ -122,9 +119,13 @@ public class SPOJ implements Judge{
         		else if(ln == 6){ // For the problem's link.
         			String s = 	"";
         			int ch = 0;
-        			for(int i = 13 ;ch != 3 ; i ++	){
-        				if(tem.charAt(i) == '/')ch++;
-        				s += tem.charAt(i);
+        			for(int i = 13 ;; i ++	){
+        				if(tem.charAt(i) == '/')
+        					ch++;
+        				else if(ch == 2)
+        					s += tem.charAt(i);
+        				else if(ch > 2)
+        					break;
         			}
         			ret.put(arr[ind++], s);
         		}
@@ -144,12 +145,25 @@ public class SPOJ implements Judge{
         					s += tem.charAt(i);
         			ret.put(arr[ind++], s);
         		}
+        		else if(ln == 25){
+        			int r = 0;
+        			String s= "";
+        			for(int i = 0 ; i < tem.length() ; i ++){
+        				if(tem.charAt(i) == '>' || tem.charAt(i) == '<')
+        					r ++;
+        				else if(r == 2)
+        					s += tem.charAt(i);
+        				else if(r > 2)
+        					break;
+        			}
+        			ret.put("LANG", s);
+        		}
         		ln ++;
         	}
         }
         in.close();
         conn.disconnect();
-		return new Submission(ret.get("PROBLEM"), ret.get("DATE"), ret.get("TIME"), ret.get("MEM"), ret.get("RESULT"));
+		return new Submission(ret.get("PROBLEM"), ret.get("DATE"), ret.get("TIME"), ret.get("MEM"), ret.get("RESULT") , ret.get("LANG"));
 	}
 
 	@Override

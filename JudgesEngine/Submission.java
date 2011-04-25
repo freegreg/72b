@@ -1,22 +1,21 @@
 package Engine;
-/**
- * @author OmarEl-Mohandes
- *
- */
+
 public class Submission {
 	private String problemId;
 	private String date;
 	private String runtime;
 	private String memoryUsed;
 	private String status;
+	private String language;
 	public Submission(){}
-	public Submission(String problemId ,String date , String runtime , String memoryUsed , String status)
+	public Submission(String problemId ,String date , String runtime , String memoryUsed , String status , String language)
 	{
 		this.problemId = problemId;
 		this.date = date;
 		this.runtime = runtime;
 		this.memoryUsed = memoryUsed;
 		this.status = status;
+		this.language = language;
 	}
 	public String getProblemId() {
 		return problemId;
@@ -47,6 +46,12 @@ public class Submission {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	public String getLanguage() {
+		return language;
 	}
 	
 }

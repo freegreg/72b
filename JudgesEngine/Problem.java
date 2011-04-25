@@ -1,8 +1,5 @@
 package Engine;
-/**
- * @author OmarEl-Mohandes
- *
- */
+ // 23641288
 public class Problem {
 	private String id;
 	private String type;
