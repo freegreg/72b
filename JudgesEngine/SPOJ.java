@@ -157,6 +157,7 @@ public class SPOJ implements Judge{
         					break;
         			}
         			ret.put("LANG", s);
+                 break;
         		}
         		ln ++;
         	}
