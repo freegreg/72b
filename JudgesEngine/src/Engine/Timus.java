@@ -21,17 +21,17 @@ public class Timus implements Judge {
 
 	/* (non-Javadoc)
 	 * @see Engine.Judge#submitProblem(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 	 	3 --> Pascal 	
+		 	7 --> Java
+		 	9 --> C
+		 	10 --> C++
+		 	11 --> C#
 	 */
 	@Override
 	public void submitProblem(String coderId, String password,
 			String problemId, String languageId, String code)
 			throws IOException {
 		// submit.aspx?space=1
-		// 3 --> Pascal 	
-		// 7 --> Java
-		// 9 --> C
-		// 10 --> C++
-		// 11 --> C#
 		URL siteUrl = new URL("http://acm.timus.ru/submit.aspx?space=1");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 		conn.setRequestMethod("POST");
