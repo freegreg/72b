@@ -12,10 +12,27 @@ import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public class UVA implements Judge{
-
+	
+	private void signIn(String username , String password , HttpClient c) throws Exception
+	{
+	       PostMethod postMethod = new PostMethod("http://uva.onlinejudge.org/index.php?option=com_comprofiler&task=login");
+	          String[] params = { "username" , "passwd"  , "op2" , "lang" , "force_session","return","message","loginfrom"   , "cbsecuritym3" , 
+				"j573695138aa15570f64255cb6952ea8f" , "remember" , "Submit"};
+	          String[] values = { username , password  ,"login" , "english","1","B:aHR0cDovL3V2YS5vbmxpbmVqdWRnZS5vcmcv","0","loginmodule" , 
+				"cbm_7bb42aca_16fd954b_7f15599698139b8579c40ac810032daa" , "1" , "yes" , "Login"};
+	          
+	          c.getParams().setParameter(HttpMethodParams.USER_AGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8");
+	  
+	          for(int i = 0 ; i < params.length ; i ++)
+	        	  postMethod.setParameter(params[i], values[i]);
+	          postMethod.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());
+	          System.out.println("login...");
+	          c.executeMethod(postMethod);
+	}
 	private Integer getFirstCount(StringBuilder s , StringBuilder f)
 	{
 		int i = s.indexOf(f.toString())+f.length();
