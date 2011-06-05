@@ -275,8 +275,8 @@ public class SPOJ implements Judge{
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
 		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-		String[] params = {"login_user" , "password" , "problemcode" , "file" , "lang"};
-		String[] values = {coderId , password , problemId , code, languageId};
+		String[] params = {"login_user" , "password" , "problemcode" , "file" , "lang" , "submit"};
+		String[] values = {coderId , password , problemId , code, languageId , "Send"};
 		StringBuilder content = new StringBuilder();
 		for(int i = 0 ; i < params.length ; i ++)
 		{
