@@ -19,9 +19,10 @@ public interface Judge {
 	 * @param language : The ID of the language in this online judge.
 	 * @param code :     The submitted code.
 	 * @throws IOException
+	 * @throws Exception 
 	 */
 
-	public void submitProblem(String coderId , String password , String problemId , String languageId , String code) throws IOException;
+	public void submitProblem(String coderId , String password , String problemId , String languageId , String code) throws IOException, Exception;
 
 	/**
 	 * @param coderId : The ID of the coder.
