@@ -129,11 +129,11 @@ public class UVA implements Judge {
 	}
 
 	/*
-	 * Value --> language 1 --> ANSI C 4.1.2 - GNU C Compiler with options: -lm
-	 * -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE 2 --> JAVA 1.6.0 - Java Sun JDK 3
-	 * --> C++ 4.1.2 - GNU C++ Compiler with options: -lm -lcrypt -O2 -pipe
-	 * -DONLINE_JUDGE 4 --> PASCAL 2.0.4 - Free Pascal Compiler (non-Javadoc)
-	 * 
+	 * Value --> language 
+      1 --> ANSI C 
+      2 --> JAVA 1.6.0 
+      3 --> C++ 4.1.2 
+      4 --> PASCAL 2.0.4
 	 * @see Engine.Judge#submitProblem(java.lang.String, java.lang.String,
 	 * java.lang.String, java.lang.String, java.lang.String)
 	 */
