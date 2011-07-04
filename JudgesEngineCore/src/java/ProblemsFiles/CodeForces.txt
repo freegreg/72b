@@ -1,0 +1,414 @@
+|		ID		|		NAME		|		URL		
+86E | Long sequence  | http://codeforces.com/problemset/problem/86/E
+86D | Powerful array  | http://codeforces.com/problemset/problem/86/D
+86C | Genetic engineering  | http://codeforces.com/problemset/problem/86/C
+86B | Tetris revisited  | http://codeforces.com/problemset/problem/86/B
+86A | Reflection  | http://codeforces.com/problemset/problem/86/A
+85E | Guard Towers  | http://codeforces.com/problemset/problem/85/E
+85D | Sum of Medians  | http://codeforces.com/problemset/problem/85/D
+85C | Petya and Tree  | http://codeforces.com/problemset/problem/85/C
+85B | Embassy Queue  | http://codeforces.com/problemset/problem/85/B
+85A | Domino  | http://codeforces.com/problemset/problem/85/A
+84C | Biathlon  | http://codeforces.com/problemset/problem/84/C
+84A | Toy Army  | http://codeforces.com/problemset/problem/84/A
+83E | Two Subsequences  | http://codeforces.com/problemset/problem/83/E
+83D | Numbers  | http://codeforces.com/problemset/problem/83/D
+83C | Track  | http://codeforces.com/problemset/problem/83/C
+83B | Doctor  | http://codeforces.com/problemset/problem/83/B
+83A | Magical Array  | http://codeforces.com/problemset/problem/83/A
+82E | Corridor  | http://codeforces.com/problemset/problem/82/E
+82D | Two out of Three  | http://codeforces.com/problemset/problem/82/D
+82C | General Mobilization  | http://codeforces.com/problemset/problem/82/C
+82B | Sets  | http://codeforces.com/problemset/problem/82/B
+82A | Double Cola  | http://codeforces.com/problemset/problem/82/A
+81E | Pairs  | http://codeforces.com/problemset/problem/81/E
+81D | Polycarps Picture Gallery  | http://codeforces.com/problemset/problem/81/D
+81C | Average Score  | http://codeforces.com/problemset/problem/81/C
+81B | Sequence Formatting  | http://codeforces.com/problemset/problem/81/B
+81A | Plug-in  | http://codeforces.com/problemset/problem/81/A
+80B | Depression  | http://codeforces.com/problemset/problem/80/B
+80A | Panoramixs Prediction  | http://codeforces.com/problemset/problem/80/A
+79E | Security System  | http://codeforces.com/problemset/problem/79/E
+79D | Password  | http://codeforces.com/problemset/problem/79/D
+79C | Beaver  | http://codeforces.com/problemset/problem/79/C
+79B | Colorful Field  | http://codeforces.com/problemset/problem/79/B
+79A | Bus Game  | http://codeforces.com/problemset/problem/79/A
+78E | Evacuation  | http://codeforces.com/problemset/problem/78/E
+78D | Archers Shot  | http://codeforces.com/problemset/problem/78/D
+78C | Beaver Game  | http://codeforces.com/problemset/problem/78/C
+78B | Easter Eggs  | http://codeforces.com/problemset/problem/78/B
+78A | Haiku  | http://codeforces.com/problemset/problem/78/A
+77E | Martian Food  | http://codeforces.com/problemset/problem/77/E
+77D | Domino Carpet  | http://codeforces.com/problemset/problem/77/D
+77C | Beavermuncher-0xFF  | http://codeforces.com/problemset/problem/77/C
+77B | Falling Anvils  | http://codeforces.com/problemset/problem/77/B
+77A | Heroes  | http://codeforces.com/problemset/problem/77/A
+76E | Points  | http://codeforces.com/problemset/problem/76/E
+76D | Plus and xor  | http://codeforces.com/problemset/problem/76/D
+76C | Mutation  | http://codeforces.com/problemset/problem/76/C
+76B | Mice  | http://codeforces.com/problemset/problem/76/B
+76A | Gift  | http://codeforces.com/problemset/problem/76/A
+75E | Ships Shortest Path  | http://codeforces.com/problemset/problem/75/E
+75D | Big Maximum Sum  | http://codeforces.com/problemset/problem/75/D
+75C | Modified GCD  | http://codeforces.com/problemset/problem/75/C
+75B | Facetook Priority Wall  | http://codeforces.com/problemset/problem/75/B
+75A | Life Without Zeros  | http://codeforces.com/problemset/problem/75/A
+74E | Shift It!  | http://codeforces.com/problemset/problem/74/E
+74D | Hanger  | http://codeforces.com/problemset/problem/74/D
+74C | Chessboard Billiard  | http://codeforces.com/problemset/problem/74/C
+74B | Train  | http://codeforces.com/problemset/problem/74/B
+74A | Room Leader  | http://codeforces.com/problemset/problem/74/A
+73E | Morrowindows  | http://codeforces.com/problemset/problem/73/E
+73D | FreeDiv  | http://codeforces.com/problemset/problem/73/D
+73C | LionAge II  | http://codeforces.com/problemset/problem/73/C
+73B | Need For Brake  | http://codeforces.com/problemset/problem/73/B
+73A | The Elder Trolls IV: Oblivon  | http://codeforces.com/problemset/problem/73/A
+72E | Ali goes shopping  | http://codeforces.com/problemset/problem/72/E
+72D | Perse-script  | http://codeforces.com/problemset/problem/72/D
+72C | Extraordinarily Nice Numbers  | http://codeforces.com/problemset/problem/72/C
+72B | INI-file  | http://codeforces.com/problemset/problem/72/B
+72A | Goshtasp, Vishtasp and Eidi  | http://codeforces.com/problemset/problem/72/A
+71E | Nuclear Fusion  | http://codeforces.com/problemset/problem/71/E
+71D | Solitaire  | http://codeforces.com/problemset/problem/71/D
+71C | Round Table Knights  | http://codeforces.com/problemset/problem/71/C
+71B | Progress Bar  | http://codeforces.com/problemset/problem/71/B
+71A | Way Too Long Words  | http://codeforces.com/problemset/problem/71/A
+70E | Information Reform  | http://codeforces.com/problemset/problem/70/E
+70D | Professors task  | http://codeforces.com/problemset/problem/70/D
+70C | Lucky Tickets  | http://codeforces.com/problemset/problem/70/C
+70B | Text Messaging  | http://codeforces.com/problemset/problem/70/B
+70A | Cookies  | http://codeforces.com/problemset/problem/70/A
+69E | Subsegments  | http://codeforces.com/problemset/problem/69/E
+69D | Dot  | http://codeforces.com/problemset/problem/69/D
+69C | Game  | http://codeforces.com/problemset/problem/69/C
+69B | Bets  | http://codeforces.com/problemset/problem/69/B
+69A | Young Physicist  | http://codeforces.com/problemset/problem/69/A
+68E | Contact  | http://codeforces.com/problemset/problem/68/E
+68D | Half-decay tree  | http://codeforces.com/problemset/problem/68/D
+68C | Synchrophasotron  | http://codeforces.com/problemset/problem/68/C
+68B | Energy exchange  | http://codeforces.com/problemset/problem/68/B
+68A | Irrational problem  | http://codeforces.com/problemset/problem/68/A
+67E | Save the City!  | http://codeforces.com/problemset/problem/67/E
+67D | Optical Experiment  | http://codeforces.com/problemset/problem/67/D
+67C | Sequence of Balls  | http://codeforces.com/problemset/problem/67/C
+67B | Restoration of the Permutation  | http://codeforces.com/problemset/problem/67/B
+67A | Partial Teacher  | http://codeforces.com/problemset/problem/67/A
+66E | Petya and Post  | http://codeforces.com/problemset/problem/66/E
+66D | Petya and His Friends  | http://codeforces.com/problemset/problem/66/D
+66C | Petya and File System  | http://codeforces.com/problemset/problem/66/C
+66B | Petya and Countryside  | http://codeforces.com/problemset/problem/66/B
+66A | Petya and Java  | http://codeforces.com/problemset/problem/66/A
+65E | Harry Potter and the Moving Staircases  | http://codeforces.com/problemset/problem/65/E
+65D | Harry Potter and the Sorting Hat  | http://codeforces.com/problemset/problem/65/D
+65C | Harry Potter and the Golden Snitch  | http://codeforces.com/problemset/problem/65/C
+65B | Harry Potter and the History of Magic  | http://codeforces.com/problemset/problem/65/B
+65A | Harry Potter and Three Spells  | http://codeforces.com/problemset/problem/65/A
+64E | Prime Segment  | http://codeforces.com/problemset/problem/64/E
+64D | Presents  | http://codeforces.com/problemset/problem/64/D
+64C | Table  | http://codeforces.com/problemset/problem/64/C
+64B | Expression  | http://codeforces.com/problemset/problem/64/B
+64A | Factorial  | http://codeforces.com/problemset/problem/64/A
+63E | Sweets Game  | http://codeforces.com/problemset/problem/63/E
+63D | Dividing Island  | http://codeforces.com/problemset/problem/63/D
+63C | Bulls and Cows  | http://codeforces.com/problemset/problem/63/C
+63B | Settlers Training  | http://codeforces.com/problemset/problem/63/B
+63A | Sinking Ship  | http://codeforces.com/problemset/problem/63/A
+62E | World Evil  | http://codeforces.com/problemset/problem/62/E
+62D | Wormhouse  | http://codeforces.com/problemset/problem/62/D
+62C | Inquisition  | http://codeforces.com/problemset/problem/62/C
+62B | Tyndex.Brome  | http://codeforces.com/problemset/problem/62/B
+62A | A Students Dream  | http://codeforces.com/problemset/problem/62/A
+61E | Enemy is weak  | http://codeforces.com/problemset/problem/61/E
+61D | Eternal Victory  | http://codeforces.com/problemset/problem/61/D
+61C | Capture Valerian  | http://codeforces.com/problemset/problem/61/C
+61B | Hard Work  | http://codeforces.com/problemset/problem/61/B
+61A | Ultra-Fast Mathematician  | http://codeforces.com/problemset/problem/61/A
+60E | Mushroom Gnomes  | http://codeforces.com/problemset/problem/60/E
+60D | Savior  | http://codeforces.com/problemset/problem/60/D
+60C | Mushroom Strife  | http://codeforces.com/problemset/problem/60/C
+60B | Serial Time!  | http://codeforces.com/problemset/problem/60/B
+60A | Where Are My Flakes?  | http://codeforces.com/problemset/problem/60/A
+59E | Shortest Path  | http://codeforces.com/problemset/problem/59/E
+59D | Team Arrangement  | http://codeforces.com/problemset/problem/59/D
+59C | Title  | http://codeforces.com/problemset/problem/59/C
+59B | Fortune Telling  | http://codeforces.com/problemset/problem/59/B
+59A | Word  | http://codeforces.com/problemset/problem/59/A
+58E | Expression  | http://codeforces.com/problemset/problem/58/E
+58D | Calendar  | http://codeforces.com/problemset/problem/58/D
+58C | Trees  | http://codeforces.com/problemset/problem/58/C
+58B | Coins  | http://codeforces.com/problemset/problem/58/B
+58A | Chat room  | http://codeforces.com/problemset/problem/58/A
+57E | Chess  | http://codeforces.com/problemset/problem/57/E
+57D | Journey  | http://codeforces.com/problemset/problem/57/D
+57C | Array  | http://codeforces.com/problemset/problem/57/C
+57B | Martian Architecture  | http://codeforces.com/problemset/problem/57/B
+57A | Square Earth?  | http://codeforces.com/problemset/problem/57/A
+56E | Domino Principle  | http://codeforces.com/problemset/problem/56/E
+56D | Changing a String  | http://codeforces.com/problemset/problem/56/D
+56C | Corporation Mail  | http://codeforces.com/problemset/problem/56/C
+56B | Spoilt Permutation  | http://codeforces.com/problemset/problem/56/B
+56A | Bar  | http://codeforces.com/problemset/problem/56/A
+55E | Very simple problem  | http://codeforces.com/problemset/problem/55/E
+55D | Beautiful numbers  | http://codeforces.com/problemset/problem/55/D
+55C | Pie or die  | http://codeforces.com/problemset/problem/55/C
+55B | Smallest number  | http://codeforces.com/problemset/problem/55/B
+55A | Flea travel  | http://codeforces.com/problemset/problem/55/A
+54E | Vacuum Сleaner  | http://codeforces.com/problemset/problem/54/E
+54D | Writing a Song  | http://codeforces.com/problemset/problem/54/D
+54C | First Digit Law  | http://codeforces.com/problemset/problem/54/C
+54B | Cutting Jigsaw Puzzle  | http://codeforces.com/problemset/problem/54/B
+54A | Presents  | http://codeforces.com/problemset/problem/54/A
+53E | Dead Ends  | http://codeforces.com/problemset/problem/53/E
+53D | Physical Education  | http://codeforces.com/problemset/problem/53/D
+53C | Little Frog  | http://codeforces.com/problemset/problem/53/C
+53B | Blog Photo  | http://codeforces.com/problemset/problem/53/B
+53A | Autocomplete  | http://codeforces.com/problemset/problem/53/A
+52C | Circular RMQ  | http://codeforces.com/problemset/problem/52/C
+52B | Right Triangles  | http://codeforces.com/problemset/problem/52/B
+52A | 123-sequence  | http://codeforces.com/problemset/problem/52/A
+51E | Pentagon  | http://codeforces.com/problemset/problem/51/E
+51D | Geometrical problem  | http://codeforces.com/problemset/problem/51/D
+51C | Three Base Stations  | http://codeforces.com/problemset/problem/51/C
+51B | bHTML Tables Analisys  | http://codeforces.com/problemset/problem/51/B
+51A | Cheaterius's Problem  | http://codeforces.com/problemset/problem/51/A
+50E | Square Equation Roots  | http://codeforces.com/problemset/problem/50/E
+50D | Bombing  | http://codeforces.com/problemset/problem/50/D
+50C | Happy Farm 5  | http://codeforces.com/problemset/problem/50/C
+50B | Choosing Symbol Pairs  | http://codeforces.com/problemset/problem/50/B
+50A | Domino piling  | http://codeforces.com/problemset/problem/50/A
+49E | Common ancestor  | http://codeforces.com/problemset/problem/49/E
+49D | Game  | http://codeforces.com/problemset/problem/49/D
+49C | Disposition  | http://codeforces.com/problemset/problem/49/C
+49B | Sum  | http://codeforces.com/problemset/problem/49/B
+49A | Sleuth  | http://codeforces.com/problemset/problem/49/A
+48E | Ivan the Fool VS Gorynych the Dragon  | http://codeforces.com/problemset/problem/48/E
+48D | Permutations  | http://codeforces.com/problemset/problem/48/D
+48C | The Race  | http://codeforces.com/problemset/problem/48/C
+48B | Land Lot  | http://codeforces.com/problemset/problem/48/B
+48A | Rock-paper-scissors  | http://codeforces.com/problemset/problem/48/A
+47E | Cannon  | http://codeforces.com/problemset/problem/47/E
+47D | Safe  | http://codeforces.com/problemset/problem/47/D
+47C | Crossword  | http://codeforces.com/problemset/problem/47/C
+47B | Coins  | http://codeforces.com/problemset/problem/47/B
+47A | Triangular numbers  | http://codeforces.com/problemset/problem/47/A
+46E | Comb  | http://codeforces.com/problemset/problem/46/E
+46D | Parking Lot  | http://codeforces.com/problemset/problem/46/D
+46C | Hamsters and Tigers  | http://codeforces.com/problemset/problem/46/C
+46B | T-shirts from Sponsor  | http://codeforces.com/problemset/problem/46/B
+46A | Ball Game  | http://codeforces.com/problemset/problem/46/A
+45E | Director  | http://codeforces.com/problemset/problem/45/E
+45D | Event Dates  | http://codeforces.com/problemset/problem/45/D
+45C | Dancing Lessons  | http://codeforces.com/problemset/problem/45/C
+45B | School  | http://codeforces.com/problemset/problem/45/B
+45A | Codecraft III  | http://codeforces.com/problemset/problem/45/A
+44E | Anfisa the Monkey  | http://codeforces.com/problemset/problem/44/E
+44D | Hyperdrive  | http://codeforces.com/problemset/problem/44/D
+44C | Holidays  | http://codeforces.com/problemset/problem/44/C
+44B | Cola  | http://codeforces.com/problemset/problem/44/B
+44A | Indian Summer  | http://codeforces.com/problemset/problem/44/A
+43E | Race  | http://codeforces.com/problemset/problem/43/E
+43D | Journey  | http://codeforces.com/problemset/problem/43/D
+43C | Lucky Tickets  | http://codeforces.com/problemset/problem/43/C
+43B | Letter  | http://codeforces.com/problemset/problem/43/B
+43A | Football  | http://codeforces.com/problemset/problem/43/A
+42E | Baldman and the military  | http://codeforces.com/problemset/problem/42/E
+42D | Strange town  | http://codeforces.com/problemset/problem/42/D
+42C | Safe cracking  | http://codeforces.com/problemset/problem/42/C
+42B | Game of chess unfinished  | http://codeforces.com/problemset/problem/42/B
+42A | Guilty – to the kitchen!  | http://codeforces.com/problemset/problem/42/A
+41E | 3-cycles  | http://codeforces.com/problemset/problem/41/E
+41D | Pawn  | http://codeforces.com/problemset/problem/41/D
+41C | Email address  | http://codeforces.com/problemset/problem/41/C
+41B | Martian Dollar  | http://codeforces.com/problemset/problem/41/B
+41A | Translation  | http://codeforces.com/problemset/problem/41/A
+40E | Number Table  | http://codeforces.com/problemset/problem/40/E
+40D | Interesting Sequence  | http://codeforces.com/problemset/problem/40/D
+40C | Berland Square  | http://codeforces.com/problemset/problem/40/C
+40B | Repaintings  | http://codeforces.com/problemset/problem/40/B
+40A | Find Color  | http://codeforces.com/problemset/problem/40/A
+39E | What Has Dirichlet Got to Do with That?  | http://codeforces.com/problemset/problem/39/E
+39D | Cubical Planet  | http://codeforces.com/problemset/problem/39/D
+39C | Moon Craters  | http://codeforces.com/problemset/problem/39/C
+39B | Company Income Growth  | http://codeforces.com/problemset/problem/39/B
+39A | C*++ Calculations  | http://codeforces.com/problemset/problem/39/A
+38E | Lets Go Rolling!  | http://codeforces.com/problemset/problem/38/E
+38D | Vasya the Architect  | http://codeforces.com/problemset/problem/38/D
+38C | Blinds  | http://codeforces.com/problemset/problem/38/C
+38B | Chess  | http://codeforces.com/problemset/problem/38/B
+38A | Army  | http://codeforces.com/problemset/problem/38/A
+37E | Trial for Chief  | http://codeforces.com/problemset/problem/37/E
+37D | Lesson Timetable  | http://codeforces.com/problemset/problem/37/D
+37C | Old Berland Language  | http://codeforces.com/problemset/problem/37/C
+37B | Computer Game  | http://codeforces.com/problemset/problem/37/B
+37A | Towers  | http://codeforces.com/problemset/problem/37/A
+36E | Two paths  | http://codeforces.com/problemset/problem/36/E
+36D | New Game with a Chess Piece  | http://codeforces.com/problemset/problem/36/D
+36C | Bowls  | http://codeforces.com/problemset/problem/36/C
+36B | Fractal  | http://codeforces.com/problemset/problem/36/B
+36A | Extra-terrestrial Intelligence  | http://codeforces.com/problemset/problem/36/A
+35E | Parade  | http://codeforces.com/problemset/problem/35/E
+35D | Animals  | http://codeforces.com/problemset/problem/35/D
+35C | Fire Again  | http://codeforces.com/problemset/problem/35/C
+35B | Warehouse  | http://codeforces.com/problemset/problem/35/B
+35A | Shell Game  | http://codeforces.com/problemset/problem/35/A
+34E | Collisions  | http://codeforces.com/problemset/problem/34/E
+34D | Road Map  | http://codeforces.com/problemset/problem/34/D
+34C | Page Numbers  | http://codeforces.com/problemset/problem/34/C
+34B | Sale  | http://codeforces.com/problemset/problem/34/B
+34A | Reconnaissance 2  | http://codeforces.com/problemset/problem/34/A
+33E | Helper  | http://codeforces.com/problemset/problem/33/E
+33D | Knights  | http://codeforces.com/problemset/problem/33/D
+33C | Wonderful Randomized Sum  | http://codeforces.com/problemset/problem/33/C
+33B | String Problem  | http://codeforces.com/problemset/problem/33/B
+33A | What is for dinner?  | http://codeforces.com/problemset/problem/33/A
+32E | Hide-and-Seek  | http://codeforces.com/problemset/problem/32/E
+32D | Constellation  | http://codeforces.com/problemset/problem/32/D
+32C | Flea  | http://codeforces.com/problemset/problem/32/C
+32B | Borze  | http://codeforces.com/problemset/problem/32/B
+32A | Reconnaissance  | http://codeforces.com/problemset/problem/32/A
+31E | TV Game  | http://codeforces.com/problemset/problem/31/E
+31D | Chocolate  | http://codeforces.com/problemset/problem/31/D
+31C | Schedule  | http://codeforces.com/problemset/problem/31/C
+31B | Sysadmin Bob  | http://codeforces.com/problemset/problem/31/B
+31A | Worms Evolution  | http://codeforces.com/problemset/problem/31/A
+30E | Tricky and Clever Password  | http://codeforces.com/problemset/problem/30/E
+30D | Kings Problem?  | http://codeforces.com/problemset/problem/30/D
+30C | Shooting Gallery  | http://codeforces.com/problemset/problem/30/C
+30B | Codeforces World Finals  | http://codeforces.com/problemset/problem/30/B
+30A | Accounting  | http://codeforces.com/problemset/problem/30/A
+29E | Quarrel  | http://codeforces.com/problemset/problem/29/E
+29D | Ant on the Tree  | http://codeforces.com/problemset/problem/29/D
+29C | Mail Stamps  | http://codeforces.com/problemset/problem/29/C
+29B | Traffic Lights  | http://codeforces.com/problemset/problem/29/B
+29A | Spit Problem  | http://codeforces.com/problemset/problem/29/A
+28E | DravDe saves the world  | http://codeforces.com/problemset/problem/28/E
+28D | Do not fear, DravDe is kind  | http://codeforces.com/problemset/problem/28/D
+28C | Bath Queue  | http://codeforces.com/problemset/problem/28/C
+28B | pSort  | http://codeforces.com/problemset/problem/28/B
+28A | Bender Problem  | http://codeforces.com/problemset/problem/28/A
+27E | Number With The Given Amount Of Divisors  | http://codeforces.com/problemset/problem/27/E
+27D | Ring Road 2  | http://codeforces.com/problemset/problem/27/D
+27C | Unordered Subsequence  | http://codeforces.com/problemset/problem/27/C
+27B | Tournament  | http://codeforces.com/problemset/problem/27/B
+27A | Next Test  | http://codeforces.com/problemset/problem/27/A
+26E | Multithreading  | http://codeforces.com/problemset/problem/26/E
+26D | Tickets  | http://codeforces.com/problemset/problem/26/D
+26C | Parquet  | http://codeforces.com/problemset/problem/26/C
+26B | Regular Bracket Sequence  | http://codeforces.com/problemset/problem/26/B
+26A | Almost Prime  | http://codeforces.com/problemset/problem/26/A
+25E | Test  | http://codeforces.com/problemset/problem/25/E
+25D | Roads not only in Berland  | http://codeforces.com/problemset/problem/25/D
+25C | Roads in Berland  | http://codeforces.com/problemset/problem/25/C
+25B | Phone numbers  | http://codeforces.com/problemset/problem/25/B
+25A | IQ test  | http://codeforces.com/problemset/problem/25/A
+24E | Berland collider  | http://codeforces.com/problemset/problem/24/E
+24D | Broken robot  | http://codeforces.com/problemset/problem/24/D
+24C | Sequence of points  | http://codeforces.com/problemset/problem/24/C
+24B | F1 Champions  | http://codeforces.com/problemset/problem/24/B
+24A | Ring road  | http://codeforces.com/problemset/problem/24/A
+23E | Tree  | http://codeforces.com/problemset/problem/23/E
+23D | Tetragon  | http://codeforces.com/problemset/problem/23/D
+23C | Oranges and Apples  | http://codeforces.com/problemset/problem/23/C
+23B | Party  | http://codeforces.com/problemset/problem/23/B
+23A | Youre Given a String...  | http://codeforces.com/problemset/problem/23/A
+22E | Scheme  | http://codeforces.com/problemset/problem/22/E
+22D | Segments  | http://codeforces.com/problemset/problem/22/D
+22C | System Administrator  | http://codeforces.com/problemset/problem/22/C
+22B | Bargaining Table  | http://codeforces.com/problemset/problem/22/B
+22A | Second Order Statistics  | http://codeforces.com/problemset/problem/22/A
+21D | Traveling Graph  | http://codeforces.com/problemset/problem/21/D
+21C | Stripe 2  | http://codeforces.com/problemset/problem/21/C
+21B | Intersection  | http://codeforces.com/problemset/problem/21/B
+21A | Jabber ID  | http://codeforces.com/problemset/problem/21/A
+20C | Dijkstra?  | http://codeforces.com/problemset/problem/20/C
+20B | Equation  | http://codeforces.com/problemset/problem/20/B
+20A | BerOS file system  | http://codeforces.com/problemset/problem/20/A
+19E | Fairy  | http://codeforces.com/problemset/problem/19/E
+19D | Points  | http://codeforces.com/problemset/problem/19/D
+19C | Deletion of Repeats  | http://codeforces.com/problemset/problem/19/C
+19B | Checkout Assistant  | http://codeforces.com/problemset/problem/19/B
+19A | World Football Cup  | http://codeforces.com/problemset/problem/19/A
+18E | Flag 2  | http://codeforces.com/problemset/problem/18/E
+18D | Seller Bob  | http://codeforces.com/problemset/problem/18/D
+18C | Stripe  | http://codeforces.com/problemset/problem/18/C
+18B | Platforms  | http://codeforces.com/problemset/problem/18/B
+18A | Triangle  | http://codeforces.com/problemset/problem/18/A
+17E | Palisection  | http://codeforces.com/problemset/problem/17/E
+17D | Notepad  | http://codeforces.com/problemset/problem/17/D
+17C | Balance  | http://codeforces.com/problemset/problem/17/C
+17B | Hierarchy  | http://codeforces.com/problemset/problem/17/B
+17A | Noldbach problem  | http://codeforces.com/problemset/problem/17/A
+16E | Fish  | http://codeforces.com/problemset/problem/16/E
+16D | Logging  | http://codeforces.com/problemset/problem/16/D
+16C | Monitor  | http://codeforces.com/problemset/problem/16/C
+16B | Burglar and Matches  | http://codeforces.com/problemset/problem/16/B
+16A | Flag  | http://codeforces.com/problemset/problem/16/A
+15E | Triangles  | http://codeforces.com/problemset/problem/15/E
+15D | Map  | http://codeforces.com/problemset/problem/15/D
+15C | Industrial Nim  | http://codeforces.com/problemset/problem/15/C
+15B | Laser  | http://codeforces.com/problemset/problem/15/B
+15A | Cottage Village  | http://codeforces.com/problemset/problem/15/A
+14E | Camels  | http://codeforces.com/problemset/problem/14/E
+14D | Two Paths  | http://codeforces.com/problemset/problem/14/D
+14C | Four Segments  | http://codeforces.com/problemset/problem/14/C
+14B | Young Photographer  | http://codeforces.com/problemset/problem/14/B
+14A | Letter  | http://codeforces.com/problemset/problem/14/A
+13E | Holes  | http://codeforces.com/problemset/problem/13/E
+13D | Triangles  | http://codeforces.com/problemset/problem/13/D
+13C | Sequence  | http://codeforces.com/problemset/problem/13/C
+13B | Letter A  | http://codeforces.com/problemset/problem/13/B
+13A | Numbers  | http://codeforces.com/problemset/problem/13/A
+12E | Start of the session  | http://codeforces.com/problemset/problem/12/E
+12D | Ball  | http://codeforces.com/problemset/problem/12/D
+12C | Fruits  | http://codeforces.com/problemset/problem/12/C
+12B | Correct Solution?  | http://codeforces.com/problemset/problem/12/B
+12A | Super Agent  | http://codeforces.com/problemset/problem/12/A
+11E | Forward, march!  | http://codeforces.com/problemset/problem/11/E
+11D | A Simple Task  | http://codeforces.com/problemset/problem/11/D
+11C | How Many Squares?  | http://codeforces.com/problemset/problem/11/C
+11B | Jumping Jack  | http://codeforces.com/problemset/problem/11/B
+11A | Increasing Sequence  | http://codeforces.com/problemset/problem/11/A
+10E | Greedy Change  | http://codeforces.com/problemset/problem/10/E
+10D | LCIS  | http://codeforces.com/problemset/problem/10/D
+10C | Digital Root  | http://codeforces.com/problemset/problem/10/C
+10B | Cinema Cashier  | http://codeforces.com/problemset/problem/10/B
+10A | Power Consumption Calculation  | http://codeforces.com/problemset/problem/10/A
+9E | Interestring graph and Apples  | http://codeforces.com/problemset/problem/9/E
+9D | How many trees?  | http://codeforces.com/problemset/problem/9/D
+9C | Hexadecimal's Numbers  | http://codeforces.com/problemset/problem/9/C
+9B | Running Student  | http://codeforces.com/problemset/problem/9/B
+9A | Die Roll  | http://codeforces.com/problemset/problem/9/A
+8E | Beads  | http://codeforces.com/problemset/problem/8/E
+8D | Two Friends  | http://codeforces.com/problemset/problem/8/D
+8C | Looking for Order  | http://codeforces.com/problemset/problem/8/C
+8B | Obsession with Robots  | http://codeforces.com/problemset/problem/8/B
+8A | Train and Peter  | http://codeforces.com/problemset/problem/8/A
+7E | Defining Macros  | http://codeforces.com/problemset/problem/7/E
+7D | Palindrome Degree  | http://codeforces.com/problemset/problem/7/D
+7C | Line  | http://codeforces.com/problemset/problem/7/C
+7B | Memory Manager  | http://codeforces.com/problemset/problem/7/B
+7A | Kalevitch and Chess  | http://codeforces.com/problemset/problem/7/A
+6E | Exposition  | http://codeforces.com/problemset/problem/6/E
+6D | Lizards and Basements 2  | http://codeforces.com/problemset/problem/6/D
+6C | Alice, Bob and Chocolate  | http://codeforces.com/problemset/problem/6/C
+6B | President's Office  | http://codeforces.com/problemset/problem/6/B
+6A | Triangle  | http://codeforces.com/problemset/problem/6/A
+5E | Bindian Signalizing  | http://codeforces.com/problemset/problem/5/E
+5D | Follow Traffic Rules  | http://codeforces.com/problemset/problem/5/D
+5C | Longest Regular Bracket Sequence  | http://codeforces.com/problemset/problem/5/C
+5B | Center Alignment  | http://codeforces.com/problemset/problem/5/B
+5A | Chat Servers Outgoing Traffic  | http://codeforces.com/problemset/problem/5/A
+4D | Mysterious Present  | http://codeforces.com/problemset/problem/4/D
+4C | Registration System  | http://codeforces.com/problemset/problem/4/C
+4B | Before an Exam  | http://codeforces.com/problemset/problem/4/B
+4A | Watermelon  | http://codeforces.com/problemset/problem/4/A
+3D | Least cost bracket sequence  | http://codeforces.com/problemset/problem/3/D
+3C | Tic-tac-toe  | http://codeforces.com/problemset/problem/3/C
+3B | Lorry  | http://codeforces.com/problemset/problem/3/B
+3A | Shortest path of the king  | http://codeforces.com/problemset/problem/3/A
+2C | Commentator problem  | http://codeforces.com/problemset/problem/2/C
+2B | The least round way  | http://codeforces.com/problemset/problem/2/B
+2A | Winner  | http://codeforces.com/problemset/problem/2/A
+1C | Ancient Berland Circus  | http://codeforces.com/problemset/problem/1/C
+1B | Spreadsheet  | http://codeforces.com/problemset/problem/1/B
+1A | Theater Square  | http://codeforces.com/problemset/problem/1/A
