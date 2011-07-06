@@ -3,12 +3,13 @@ package Test;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,11 +17,12 @@ import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import Engine.Judge;
 import Engine.Problem;
-import Engine.ProblemText;
 import Engine.SPOJ;
+import Engine.Submission;
 
 	
 public class Test {
@@ -43,8 +45,20 @@ public class Test {
 		// generateProblemFile(arr[i] ,
 		// arr[i].getClass().getSimpleName()+".txt");
 		Judge j = new SPOJ();
-		ArrayList<ProblemText> a = j.getProblemTexts("/home/workspace/JudgesEngine/src/ProblemsFiles/SPOJ.txt");
+//		Scanner ss = new Scanner(new File("/home/workspace/SPOJ/ProblemsSPOJ/1022_ANGELS.cppxx"));
+//		StringBuilder sb = new StringBuilder();
+//		String tem ;
+//		while(ss.hasNext())
+//			sb.append(ss.nextLine()+"\n");
+//		j.submitProblem("omar_90", "OmarEl-Mohandes", "ANGELS", "41", sb.toString());
 
+//		HttpClient h = new HttpClient();
+//		SIGN("OmarEl.Mohandes", "mmaw1234", h);
+//		cookies.put("OmarEl.Mohandes", h);
+		Submission s = j.getLastSubmission("omar_90", "mmaw1234");
+		System.out.println(s.getDate() + "\n" + s.getLanguage() + "\n" + s.getMemoryUsed() + "\n" + s.getProblemId() + "\n" + s.getRuntime() + "\n" + s.getStatus());
+//		ArrayList<ProblemText> a = j.getProblemTexts("/home/workspace/JudgesEngine/src/ProblemsFiles/SPOJ.txt");
+		
 //	Submission s =  j.getLastSubmission("OmarEl.Mohandes", "mmaw1234");
 //		Problem p = new Problem("id", "url", "name", "numberOfAccepted", "numberOfTried");
 //		Method[] m = p.getClass().getDeclaredMethods();
@@ -173,14 +187,30 @@ public class Test {
 		c.getParams().setParameter(HttpMethodParams.USER_AGENT, "Linux-Omar");
 		System.out.println("login...");
 		int code = c.executeMethod(p);
-		System.out.println(p.getResponseBodyAsString());
 		if (code == 301)
 			System.out.println("Signed In");
 		else
 			System.out.println("ERROR");
-		PrintWriter p2 = new PrintWriter(new File("test.html"));
-		p2.write(p.getResponseBodyAsString());
-		p2.flush();
-		p2.close();
 	}
+	  static HashMap<String, HttpClient> cookies = new HashMap<String, HttpClient>();
+	  public static void submitProblem(String coderId, String password,
+	            String problemId, String language, String code) throws Exception {
+	        HttpClient c = cookies.get(coderId);
+	        String[] params = {"localid", "language", "code", "problemid",
+	            "category", "codeupl"};
+	        String[] values = {problemId, language, code, "", "", ""};
+	        PostMethod p = new PostMethod(
+	                "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=25&page=save_submission");
+	        for (int i = 0; i < params.length; i++) {
+	            p.addParameter(params[i], values[i]);
+	        }
+	        p.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+	                new DefaultHttpMethodRetryHandler());
+	        c.getParams().setContentCharset("UTF-8");
+	        int cc = c.executeMethod(p);
+	        if (cc == 301) 
+	            System.out.println("Submitted successfully");
+	        else
+	            System.out.println("Submitted Unsuccessfully");
+	    }
 }
