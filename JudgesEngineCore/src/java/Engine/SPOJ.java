@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.lang.StringEscapeUtils;
 
 
 public class SPOJ implements Judge{
@@ -91,91 +92,7 @@ public class SPOJ implements Judge{
 
 	@Override
 	public Submission getLastSubmission(String coderId , String pass) throws Exception {
-		HashMap<String, String>ret = new HashMap<String, String>();
-		URL siteUrl = new URL("https://www.spoj.pl/status/"+coderId+"/");
-		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
-		conn.setRequestMethod("POST");
-		conn.setDoOutput(true);
-		conn.setDoInput(true);
-		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-		out.writeBytes("");
-		out.flush();
-		out.close();
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String tem , teto = "<td class=\"status_sm\">" ;
-		String [] arr = {"DATE" , "PROBLEM" ,"RESULT" , "TIME" , "MEM" , "LANG"};
-		int ind = 0 , ln = 1 ;
-		boolean flag = false;
-        while((tem = in.readLine()) != null && ind != arr.length)
-        {
-        	@SuppressWarnings("unused")
-			int temp;
-        	if((temp = tem.indexOf(teto)) != -1){
-        		flag = true;
-        	}
-        	if(flag)
-        	{
-        		if(ln == 3){ // For The Date.
-        			ret.put(arr[ind++], tem);
-        		}
-        		else if(ln == 10){ // For the Result
-        			String s = "";
-        			for(int i = 0 ; i < tem.length() ; i ++)
-        				if((tem.charAt(i)>= 'a' && tem.charAt(i) <= 'z') || tem.charAt(i) == ' ')
-        					s += tem.charAt(i);
-        			ret.put(arr[ind++], s);
-        			if(tem.equals("compilation error"))
-        				break;
-        		}
-        		else if(ln == 6){ // For the problem's link.
-        			String s = 	"";
-        			int ch = 0;
-        			for(int i = 13 ;; i ++	){
-        				if(tem.charAt(i) == '/')
-        					ch++;
-        				else if(ch == 2)
-        					s += tem.charAt(i);
-        				else if(ch > 2)
-        					break;
-        			}
-        			ret.put(arr[ind++], s);
-        		}
-        		else if(ln == 19){ // For the running time.
-        			String s = "";
-        			for(int i = 0 ; i < tem.length();i ++){
-        				if(tem.charAt(i) == '.' || (tem.charAt(i) >= '0' && tem.charAt(i) <= '9'))
-        					s += tem.charAt(i);
-        			}
-        			ret.put(arr[ind++], s);
-        		}
-        		else if(ln == 22){ // For the memory used.
-        			String s = "";	
-        			for(int i = 0 ; i < tem.length() ; i ++)
-        				if((tem.charAt(i)>= '0' && tem.charAt(i) <= '9') || 
-        						tem.charAt(i) == '.' || tem.charAt(i) == 'M')
-        					s += tem.charAt(i);
-        			ret.put(arr[ind++], s);
-        		}
-        		else if(ln == 25){
-        			int r = 0;
-        			String s= "";
-        			for(int i = 0 ; i < tem.length() ; i ++){
-        				if(tem.charAt(i) == '>' || tem.charAt(i) == '<')
-        					r ++;
-        				else if(r == 2)
-        					s += tem.charAt(i);
-        				else if(r > 2)
-        					break;
-        			}
-        			ret.put("LANG", s);
-                 break;
-        		}
-        		ln ++;
-        	}
-        }
-        in.close();
-        conn.disconnect();
-		return new Submission(ret.get("PROBLEM"), ret.get("DATE"), ret.get("TIME"), ret.get("MEM"), ret.get("RESULT") , ret.get("LANG"));
+		return null;
 	}
 
 	@Override
@@ -283,8 +200,9 @@ public class SPOJ implements Judge{
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
 		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+		code = code.replaceAll("&", "%26");
 		String[] params = {"login_user" , "password" , "problemcode" , "file" , "lang" , "submit"};
-		String[] values = {coderId , password , problemId , code, languageId , "Send"};
+		String[] values = {coderId , password , problemId ,code , languageId , "Send"};
 		StringBuilder content = new StringBuilder();
 		for(int i = 0 ; i < params.length ; i ++)
 		{
