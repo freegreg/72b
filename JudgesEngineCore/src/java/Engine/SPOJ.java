@@ -3,12 +3,20 @@ package Engine;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
 
 
 public class SPOJ implements Judge{
@@ -293,12 +301,70 @@ public class SPOJ implements Judge{
 
     @Override
     public boolean signIn(String username, String password) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     @Override
     public boolean signOut(String username) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
+    }
+    private String match(String text , String regex , int g)
+    {
+    	 Matcher m = Pattern.compile(regex).matcher(text);
+    	 if(m.find())
+    		 return m.group(g);
+    	 return "la2a";
+    }
+    @Override
+    public ArrayList<ProblemText> getProblemTexts(String filePath) throws Exception {
+            ArrayList<ProblemText> ret = new ArrayList<ProblemText>();
+            String dis = "<p align=\"justify\">([\\s\\S]*?)(<h3[^<>]*>Input|<hr>)";
+            String input = "<h3[^<>]*>Input</h3>([\\s\\S]*?)(<h3[^<>]*>|<hr>)";
+            String output = "<h3[^<>]*>Output</h3>([\\s\\S]*?)(<h3[^<>]*>|<hr>)";
+            String sampleT = "<h3[^<>]*>Example</h3>([\\s\\S]*?)(<h3[^<>]*>|<hr>)";
+            
+            GetMethod g = new GetMethod();
+            HttpClient h = new HttpClient();
+            Scanner s = new Scanner(new File(filePath));
+            String line;
+            s.nextLine();
+    		PrintWriter p = new PrintWriter(new File("/home/workspace/JudgesEngine/src/ProblemsTextFiles/SPOJ.txt"));
+    		int f = 0;
+            while(s.hasNext()){
+            	f ++;
+            	if(f%10 == 0)
+            		p.flush();
+            	line = s.nextLine();
+	            g = new GetMethod("http://www.spoj.pl/problems/"+line.substring(0, line.indexOf("|")-1));
+                h.executeMethod(g);
+                System.out.println(line.substring(0, line.indexOf("|")-1));
+                String d = match(g.getResponseBodyAsString() , dis , 1);
+                String i = match(g.getResponseBodyAsString(), input, 1);
+                String o = match(g.getResponseBodyAsString(), output,1);
+                String ss = match(g.getResponseBodyAsString(), sampleT,1);
+                if(i.equals("la2a") || o.equals("la2a") || ss.equals("la2a"))
+                {
+                    p.write(line.substring(0, line.indexOf("|")-1) + "|false\n");
+               //     System.out.println(line.substring(0, line.indexOf("|")-1) + "|false\n");
+                	ret.add(new ProblemText("", "", "", "", false, d));
+               // 	System.out.println(d);
+                	p.write(d+"\n");
+                }
+                else
+                {
+                    p.write(line.substring(0, line.indexOf("|")-1) + "|true\n");
+               //     System.out.println(line.substring(0, line.indexOf("|")-1) + "|true\n");
+                	p.write("*******ProblemStatement*******\n" + d + "\n*******InputConstraints*******\n" + i + "\n*******OutputConstraints*******\n" + o + "\n*******IOTestCases*******\n" + ss+"\n");
+
+               //   	System.out.println("*******ProblemStatement*******\n" + d + "\n*******InputConstraints*******\n" + i + "\n*******OutputConstraints*******\n" + o + "\n*******IOTestCases*******\n" + ss);   
+                	ret.add(new ProblemText(d, i , o, ss, true, ""));
+                }
+	           // System.out.println("______________________________________________________");
+	            p.write("______________________________________________________\n");
+            }
+            p.flush();
+            p.close();
+            return ret;
     }
 
 }

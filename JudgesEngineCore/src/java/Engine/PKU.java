@@ -111,4 +111,9 @@ public class PKU implements Judge {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public ArrayList<ProblemText> getProblemTexts(String filePath) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

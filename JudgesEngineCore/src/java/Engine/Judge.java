@@ -11,6 +11,12 @@ import java.util.ArrayList;
 public interface Judge {
 
     /**
+     * @param filePath : The filePath that contains all the urls of the problems.
+     * @return : All the problems texts 
+     * @throws Exception 
+     */
+    public ArrayList<ProblemText> getProblemTexts(String filePath)throws Exception;
+    /**
      * 
      * @param username : Username of the coder.
      * @param password : Password of the coder.

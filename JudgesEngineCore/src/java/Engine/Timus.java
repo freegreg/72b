@@ -154,12 +154,17 @@ public class Timus implements Judge {
 	}
 
     @Override
-    public boolean signIn(String username, String password) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean signIn(String username, String password) throws Exception { 
+        return true;
     }
 
     @Override
     public boolean signOut(String username) {
+        return true;
+    }
+
+    @Override
+    public ArrayList<ProblemText> getProblemTexts(String filePath) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
