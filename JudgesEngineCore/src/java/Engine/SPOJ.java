@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -92,7 +93,44 @@ public class SPOJ implements Judge{
 
 	@Override
 	public Submission getLastSubmission(String coderId , String pass) throws Exception {
-		return null;
+		URL siteUrl = new URL("https://www.spoj.pl/status/"+coderId+"/");
+		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+		out.writeBytes("");
+		out.flush();
+		out.close();
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String te ;
+        StringBuilder s = new StringBuilder();
+        while((te = in.readLine()) != null)
+        	s.append(te + " ");
+        System.out.println(s.toString());
+        conn.disconnect();
+        in.close();
+        String dateR = "<td class=\"status_sm\">\\s*([\\d|\\:|\\-|\\s]+)\\s*</td>";//\\s*<td><a href=\"/problems/";
+        String resultR = "<td><a href=\"[\\s\\S]+>\\s*(compilation error|accepted|runtime error    (NZEC)|time limit exceeded|wrong answer)\\s*</td> <td class=\"statustext\" id=\"statustime";
+        String timeR = "<td class=\"statustext\" id=\"statustime_\\d+\">\\s+<a href=\"/ranks/[A-Z]+/\" title=\"See the best solutions\">\\s+(-|\\d|[.])+\\s+</a>";
+        String memoryR="<td class=\"statustext\" id=\"statusmem_\\d+\">\\s+([\\-|\\.|M|\\d]+)\\s+</td>";
+        String langR = "<td class=\"slang\">\\s*<p>([\\+|A-Z]+)</p>";
+        String problemidR = "<td><a href=\"/problems/([A-Z]+)/\"";
+        String[] regex = {dateR , problemidR , timeR , memoryR , resultR , langR};
+        Submission sub = new Submission();
+        Method[] tem = sub.getClass().getDeclaredMethods();
+        int k = 0 ;
+        for (int i = 0; i < tem.length && k < regex.length ; i++) {
+        	System.out.println(tem[i].getName());
+            if (tem[i].getReturnType().equals(String.class)) {
+                continue;
+            }
+            Matcher m1 = Pattern.compile(regex[k++]).matcher(s);
+            m1.find();
+            tem[i].invoke(sub, m1.group(1));
+            System.out.println(m1.group(1));
+		}
+        return sub;
 	}
 
 	@Override
