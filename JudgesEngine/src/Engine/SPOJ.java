@@ -16,11 +16,9 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public class SPOJ implements Judge {
 
@@ -95,7 +93,7 @@ public class SPOJ implements Judge {
 	@Override
 	public Submission getLastSubmission(String coderId, String pass)
 			throws Exception {
-		URL siteUrl = new URL("https://www.spoj.pl/status/" + coderId + "/");
+		URL siteUrl = new URL("http://www.spoj.pl/status/" + coderId + "/");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setDoOutput(true);
@@ -183,7 +181,7 @@ public class SPOJ implements Judge {
 
 	@Override
 	public ArrayList<String> getProblemsSolved(String coderId) throws Exception {
-		URL site = new URL("https://www.spoj.pl/users/" + coderId);
+		URL site = new URL("http://www.spoj.pl/users/" + coderId);
 		ArrayList<String> ret = new ArrayList<String>();
 		HttpURLConnection conn = (HttpURLConnection) site.openConnection();
 		conn.setRequestMethod("POST");
@@ -240,7 +238,7 @@ public class SPOJ implements Judge {
 	public void submitProblem(String coderId, String password,
 			String problemId, String languageId, String code)
 			throws IOException {
-		URL siteUrl = new URL("https://www.spoj.pl/submit/complete/");
+		URL siteUrl = new URL("http://www.spoj.pl/submit/complete/");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 		conn.setRequestMethod("POST");
 		conn.setDoOutput(true);
