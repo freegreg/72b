@@ -118,16 +118,12 @@ public class SPOJ implements Judge {
 		String problemidR = "<td><a href=\"/problems/(\\w+)/\"";
 		String[] regex = {problemidR ,  dateR , timeR, memoryR, resultR, langR };
 		Submission sub = new Submission();
-		Method[] tem = sub.getClass().getDeclaredMethods();
-		int k = 0;
-		for (int i = 0; i < tem.length && k < regex.length; i++) {
-			if (tem[i].getReturnType().equals(String.class)) {
-				continue;
-			}
-			Matcher m1 = Pattern.compile(regex[k++]).matcher(s);
-			m1.find();
-			tem[i].invoke(sub, m1.group(1));
-		}
+		Matcher m1 = Pattern.compile(dateR).matcher(s);m1.find();sub.setDate(m1.group(1));
+		m1 = Pattern.compile(resultR).matcher(s);m1.find();sub.setStatus(m1.group(1));
+		m1 = Pattern.compile(timeR).matcher(s);m1.find();sub.setRuntime(m1.group(1));
+		m1 = Pattern.compile(memoryR).matcher(s);m1.find();sub.setMemoryUsed(m1.group(1));
+		m1 = Pattern.compile(langR).matcher(s);m1.find();sub.setLanguage(m1.group(1));
+		m1 = Pattern.compile(problemidR).matcher(s);m1.find();sub.setProblemId(m1.group(1));
 		return sub;
 	}
 
