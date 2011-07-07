@@ -108,17 +108,15 @@ public class SPOJ implements Judge {
 		StringBuilder s = new StringBuilder();
 		while ((te = in.readLine()) != null)
 			s.append(te + " ");
-		System.out.println(s.toString());
 		conn.disconnect();
 		in.close();
-		String dateR = "<td class=\"status_sm\">\\s*([\\d|\\:|\\-|\\s]+)\\s*</td>";// \\s*<td><a
-																					// href=\"/problems/";
+		String dateR = "<td class=\"status_sm\">\\s*([\\d|\\:|\\-|\\s]+)\\s*</td>";																			// href=\"/problems/";
 		String resultR = "<td><a href=\"[\\s\\S]+>\\s*(compilation error|accepted|runtime error    (NZEC)|time limit exceeded|wrong answer)\\s*</td> <td class=\"statustext\" id=\"statustime";
 		String timeR = "<td class=\"statustext\" id=\"statustime_\\d+\">\\s+<a href=\"/ranks/[A-Z]+/\" title=\"See the best solutions\">\\s+(-|\\d|[.])+\\s+</a>";
 		String memoryR = "<td class=\"statustext\" id=\"statusmem_\\d+\">\\s+([\\-|\\.|M|\\d]+)\\s+</td>";
 		String langR = "<td class=\"slang\">\\s*<p>([\\+|A-Z]+)</p>";
-		String problemidR = "<td><a href=\"/problems/([A-Z]+)/\"";
-		String[] regex = { dateR, problemidR, timeR, memoryR, resultR, langR };
+		String problemidR = "<td><a href=\"/problems/(\\w+)/\"";
+		String[] regex = {problemidR ,  dateR , timeR, memoryR, resultR, langR };
 		Submission sub = new Submission();
 		Method[] tem = sub.getClass().getDeclaredMethods();
 		int k = 0;
@@ -129,7 +127,6 @@ public class SPOJ implements Judge {
 			Matcher m1 = Pattern.compile(regex[k++]).matcher(s);
 			m1.find();
 			tem[i].invoke(sub, m1.group(1));
-			System.out.println(m1.group(1));
 		}
 		return sub;
 	}

@@ -39,6 +39,13 @@ public class Test {
 		// for(int i = 0 ; i < arr.length ; i ++)
 		// generateProblemFile(arr[i] ,
 		// arr[i].getClass().getSimpleName()+".txt");
+		Judge j = new SPOJ();
+//		System.out.println("Sign In");
+//		j.signIn("OmarEl.Mohandes", "mmaw1234");
+//		System.out.println("Submit");
+		j.submitProblem("omar_90", "OmarEl-Mohandes", "CANDY", "10", "ya mosahel");
+		Submission s = j.getLastSubmission("omar_90", "OmarEl-Mohandes");
+		System.out.println(s.getDate() + "\n" + s.getLanguage() +"\n" +s.getMemoryUsed() +"\n"+s.getProblemId()+"\n"+s.getRuntime()+"\n"+s.getStatus());
 //		Scanner ss = new Scanner(new File("/home/workspace/SPOJ/ProblemsSPOJ/1022_ANGELS.cppxx"));
 //		StringBuilder sb = new StringBuilder();
 //		String tem ;
