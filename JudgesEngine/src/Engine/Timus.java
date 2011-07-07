@@ -155,7 +155,23 @@ public class Timus implements Judge {
 
     @Override
     public boolean signIn(String username, String password) throws Exception { 
-        return true;
+		URL siteUrl = new URL("http://acm.timus.ru/authedit.aspx");
+		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
+		conn.setRequestMethod("POST");
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+		out.writeBytes("Action=edit&JudgeID="+username+"&Password=");
+		out.flush();
+		out.close();
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		String tem;
+		String regex = "<FONT COLOR=\"Red\">Invalid JUDGE_ID</FONT>";
+		while((tem = in.readLine()) != null){
+			if(tem.indexOf(regex) != -1)
+				return false;
+		}
+    	return true;
     }
 
     @Override

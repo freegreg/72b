@@ -9,7 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,12 +16,8 @@ import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
-import org.apache.commons.lang.StringEscapeUtils;
 
-import Engine.Judge;
-import Engine.Problem;
-import Engine.SPOJ;
-import Engine.Submission;
+import Engine.*;
 
 	
 public class Test {
@@ -44,7 +39,6 @@ public class Test {
 		// for(int i = 0 ; i < arr.length ; i ++)
 		// generateProblemFile(arr[i] ,
 		// arr[i].getClass().getSimpleName()+".txt");
-		Judge j = new SPOJ();
 //		Scanner ss = new Scanner(new File("/home/workspace/SPOJ/ProblemsSPOJ/1022_ANGELS.cppxx"));
 //		StringBuilder sb = new StringBuilder();
 //		String tem ;
@@ -55,8 +49,8 @@ public class Test {
 //		HttpClient h = new HttpClient();
 //		SIGN("OmarEl.Mohandes", "mmaw1234", h);
 //		cookies.put("OmarEl.Mohandes", h);
-		Submission s = j.getLastSubmission("omar_90", "mmaw1234");
-		System.out.println(s.getDate() + "\n" + s.getLanguage() + "\n" + s.getMemoryUsed() + "\n" + s.getProblemId() + "\n" + s.getRuntime() + "\n" + s.getStatus());
+//		Submission s = j.getLastSubmission("omar_90", "mmaw1234");
+//		System.out.println(s.getDate() + "\n" + s.getLanguage() + "\n" + s.getMemoryUsed() + "\n" + s.getProblemId() + "\n" + s.getRuntime() + "\n" + s.getStatus());
 //		ArrayList<ProblemText> a = j.getProblemTexts("/home/workspace/JudgesEngine/src/ProblemsFiles/SPOJ.txt");
 		
 //	Submission s =  j.getLastSubmission("OmarEl.Mohandes", "mmaw1234");
