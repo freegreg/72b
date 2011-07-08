@@ -37,7 +37,6 @@ public class UVA implements Judge {
 		ArrayList<String> ret = new ArrayList<String>();
 		Matcher m = Pattern.compile("<body>\\s*O_O([\\s\\S]*)O_O\\s*</body>")
 				.matcher(page);
-		System.out.println(page);
 		if(!m.find())
 			return ret;
 		String a = m.group(1);
@@ -77,8 +76,8 @@ public class UVA implements Judge {
 				"http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
 				"username=" + coderId + "&password=" + password
 						+ "&ID=4&JID=UVA");
-		return new Submission(a.get(0), a.get(5), a.get(1), a.get(2), a.get(3),
-				a.get(4));
+		return new Submission(a.get(3), a.get(0), a.get(4), "", a.get(5),
+				a.get(1));
 	}
 
 	@Override
