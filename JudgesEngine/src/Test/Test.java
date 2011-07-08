@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +18,10 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
-import Engine.*;
+import Engine.Judge;
+import Engine.Problem;
+import Engine.Submission;
+import Engine.UVA;
 
 	
 public class Test {
@@ -39,18 +43,39 @@ public class Test {
 		// for(int i = 0 ; i < arr.length ; i ++)
 		// generateProblemFile(arr[i] ,
 		// arr[i].getClass().getSimpleName()+".txt");
-		Judge j = new SPOJ();
+//		Judge j = new UVA();
 //		System.out.println("Sign In");
 //		j.signIn("OmarEl.Mohandes", "mmaw1234");
 //		System.out.println("Submit");
-		j.submitProblem("omar_90", "OmarEl-Mohandes", "CANDY", "10", "ya mosahel");
-		Submission s = j.getLastSubmission("omar_90", "OmarEl-Mohandes");
-		System.out.println(s.getDate() + "\n" + s.getLanguage() +"\n" +s.getMemoryUsed() +"\n"+s.getProblemId()+"\n"+s.getRuntime()+"\n"+s.getStatus());
-//		Scanner ss = new Scanner(new File("/home/workspace/SPOJ/ProblemsSPOJ/1022_ANGELS.cppxx"));
-//		StringBuilder sb = new StringBuilder();
-//		String tem ;
-//		while(ss.hasNext())
-//			sb.append(ss.nextLine()+"\n");
+//		System.out.println(tem.replaceAll("&", "%26"));
+		Scanner ss = new Scanner(new File("/home/workspace/JudgesEngine/src/ProblemsTextFiles/SPOJ.txt"));
+		PrintWriter p = new PrintWriter(new File("/home/workspace/JudgesEngine/src/ProblemsTextFiles/SPOJ2.txt"));
+		StringBuilder sb = new StringBuilder();
+		int i = 0 ;
+		while(ss.hasNext())
+		{
+			String regex = "<img src=\"([^<>\"[http]]+)\"";
+			String r = ss.nextLine();
+			Matcher m1 = Pattern.compile(regex).matcher(r);
+			if(m1.find()){
+				System.out.println(m1.group(1));
+				r = r.replaceAll("https" , "http" + m1.group(1) +"\"");
+			}
+			p.write(r + "\n");
+			if((++i) % 10 == 0)
+				p.flush();
+		}
+		p.close();
+//		j.signIn("OmarEl.Mohandes", "mmaw1234");
+//		System.out.println("Submitting...");
+//		j.submitProblem("OmarEl.Mohandes", "mmaw1234", "383", "3", sb.toString());
+	//	System.out.println(j.signIn("uvatest72", "123456"));
+//		j.getProblemTexts("/home/workspace/JudgesEngine/src/ProblemsFiles/SPOJ.txt");
+//		j.submitProblem("uvatest72", "123456", "102", "2", "");
+//		System.out.println("Getting the result ... ");
+//		Submission s = j.getLastSubmission("OmarEl.Mohandes", "mmaw1234");
+//		System.out.println(s.getDate() + "\n" + s.getLanguage() +"\n" +s.getMemoryUsed() +"\n"+s.getProblemId()+"\n"+s.getRuntime()+"\n"+s.getStatus());
+
 //		j.submitProblem("omar_90", "OmarEl-Mohandes", "ANGELS", "41", sb.toString());
 
 //		HttpClient h = new HttpClient();

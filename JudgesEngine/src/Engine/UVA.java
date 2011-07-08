@@ -34,12 +34,14 @@ public class UVA implements Judge {
 			page.append(tem + "\n");
 		in.close();
 		conn.disconnect();
+		ArrayList<String> ret = new ArrayList<String>();
 		Matcher m = Pattern.compile("<body>\\s*O_O([\\s\\S]*)O_O\\s*</body>")
 				.matcher(page);
-		m.find();
+		System.out.println(page);
+		if(!m.find())
+			return ret;
 		String a = m.group(1);
 		StringTokenizer s = new StringTokenizer(a, "|");
-		ArrayList<String> ret = new ArrayList<String>();
 		while (s.countTokens() != 0)
 			ret.add(s.nextToken());
 		return ret;
@@ -103,9 +105,31 @@ public class UVA implements Judge {
 	@Override
 	public void submitProblem(String coderId, String password,
 			String problemId, String language, String code) throws Exception {
+		char[] chars = { '%', '{', '}', 
+				'|', '\\', '^',
+				'~', '[', ']', 
+				';', '/', 
+				'?', ':', '@', 
+				'=', '&', '$', '+' };
+		String[] map = { "%25", "%7B", "%7D",
+				"%7C", "%5C", "%5E", 
+				"%7E", "%5B", "%5D", 
+				"%3B", "%2F",
+				"%3F", "%3A", "%40", 
+				"%3D", "%26", "%24", "%2B" };
+		for(int i = 0 ; i < map.length ; i ++){
+			String tem = "";
+			for(int k = 0 ; k < code.length() ; k ++){
+				if(code.charAt(k) == chars[i])
+					tem += map[i];
+				else
+					tem += Character.toString(code.charAt(k));
+			}
+			code = tem;
+		}
 		getResponse("http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
 				"coderId=" + coderId + "&password=" + password + "&problemId="
-						+ problemId + "&languageId=" + language + "&code=" + code.replaceAll("&", "%26") + "&ID=3&JID=UVA");
+						+ problemId + "&languageId=" + language + "&code=" + code + "&ID=3&JID=UVA");
 	}
 
 	@Override
