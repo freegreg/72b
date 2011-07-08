@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,9 +16,11 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public class SPOJ implements Judge {
 
@@ -93,6 +95,7 @@ public class SPOJ implements Judge {
 	@Override
 	public Submission getLastSubmission(String coderId, String pass)
 			throws Exception {
+		Submission ret = new Submission();
 		URL siteUrl = new URL("http://www.spoj.pl/status/" + coderId + "/");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 		conn.setRequestMethod("GET");
@@ -106,25 +109,46 @@ public class SPOJ implements Judge {
 				conn.getInputStream()));
 		String te;
 		StringBuilder s = new StringBuilder();
-		while ((te = in.readLine()) != null)
+		while ((te = in.readLine()) != null) {
 			s.append(te + " ");
+		}
 		conn.disconnect();
 		in.close();
-		String dateR = "<td class=\"status_sm\">\\s*([\\d|\\:|\\-|\\s]+)\\s*</td>";																			// href=\"/problems/";
-		String resultR = "<td><a href=\"[\\s\\S]+>\\s*(compilation error|accepted|runtime error    (NZEC)|time limit exceeded|wrong answer)\\s*</td> <td class=\"statustext\" id=\"statustime";
-		String timeR = "<td class=\"statustext\" id=\"statustime_\\d+\">\\s+<a href=\"/ranks/[A-Z]+/\" title=\"See the best solutions\">\\s+(-|\\d|[.])+\\s+</a>";
-		String memoryR = "<td class=\"statustext\" id=\"statusmem_\\d+\">\\s+([\\-|\\.|M|\\d]+)\\s+</td>";
+		String maxR = "<input type=\"hidden\" id=\"max_id\" value=\"(\\d+)\" />";
+		String dateR = "<td class=\"status_sm\">\\s*([\\d|\\:|\\-|\\s]+)\\s*</td>"; // href=\"/problems/";
+		String resultR = "<td><a href=\"[\\s\\S]+>\\s*(compilation error|accepted|runtime error    (NZEC)|time limit exceeded|wrong answer)[\\s\\S]*<td class=\"statustext\" id=\"statustime_";
+		String timeR = "<td class=\"statustext\" id=\"statustime_\\d+\">\\s+<a href=\"/ranks/[A-Z]+/\" title=\"See the best solutions\">\\s+([\\-|\\d|\\.]+)\\s+</a>";
+		String memoryR = "<td class=\"statustext\" id=\"statusmem_\\d+\">\\s+([\\-|\\.|M|\\d|k]+)\\s+</td>";
 		String langR = "<td class=\"slang\">\\s*<p>([\\+|A-Z]+)</p>";
 		String problemidR = "<td><a href=\"/problems/(\\w+)/\"";
-		String[] regex = {problemidR ,  dateR , timeR, memoryR, resultR, langR };
-		Submission sub = new Submission();
-		Matcher m1 = Pattern.compile(dateR).matcher(s);m1.find();sub.setDate(m1.group(1));
-		m1 = Pattern.compile(resultR).matcher(s);m1.find();sub.setStatus(m1.group(1));
-		m1 = Pattern.compile(timeR).matcher(s);m1.find();sub.setRuntime(m1.group(1));
-		m1 = Pattern.compile(memoryR).matcher(s);m1.find();sub.setMemoryUsed(m1.group(1));
-		m1 = Pattern.compile(langR).matcher(s);m1.find();sub.setLanguage(m1.group(1));
-		m1 = Pattern.compile(problemidR).matcher(s);m1.find();sub.setProblemId(m1.group(1));
-		return sub;
+		Submission sub = new Submission("", "", "", "", "", "");
+		Matcher m1 = Pattern.compile(maxR).matcher(s);
+		m1.find();
+		m1 = Pattern.compile(resultR+m1.group(1)).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setStatus(m1.group(1));
+		m1 = Pattern.compile(dateR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setDate(m1.group(1));
+		m1 = Pattern.compile(timeR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setRuntime(m1.group(1));
+		m1 = Pattern.compile(memoryR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setMemoryUsed(m1.group(1));
+		m1 = Pattern.compile(langR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setLanguage(m1.group(1));
+		m1 = Pattern.compile(problemidR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setProblemId(m1.group(1));
+		return ret;
 	}
 
 	@Override
@@ -237,7 +261,28 @@ public class SPOJ implements Judge {
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
 		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-		code = code.replaceAll("&", "%26");
+		char[] chars = { '%', '{', '}', 
+				'|', '\\', '^',
+				'~', '[', ']', 
+				';', '/', 
+				'?', ':', '@', 
+				'=', '&', '$', '+' };
+		String[] map = { "%25", "%7B", "%7D",
+				"%7C", "%5C", "%5E", 
+				"%7E", "%5B", "%5D", 
+				"%3B", "%2F",
+				"%3F", "%3A", "%40", 
+				"%3D", "%26", "%24", "%2B" };
+		for(int i = 0 ; i < map.length ; i ++){
+			String tem = "";
+			for(int k = 0 ; k < code.length() ; k ++){
+				if(code.charAt(k) == chars[i])
+					tem += map[i];
+				else
+					tem += Character.toString(code.charAt(k));
+			}
+			code = tem;
+		}
 		String[] params = { "login_user", "password", "problemcode", "file",
 				"lang", "submit" };
 		String[] values = { coderId, password, problemId, code, languageId,
@@ -314,6 +359,8 @@ public class SPOJ implements Judge {
 				// System.out.println(d);
 				p.write(d + "\n");
 			} else {
+				System.out.println(line.substring(0, line.indexOf("|") - 1)
+						.length());
 				p.write(line.substring(0, line.indexOf("|") - 1) + "|true\n");
 				// System.out.println(line.substring(0, line.indexOf("|")-1) +
 				// "|true\n");
