@@ -25,12 +25,12 @@ public class LiveArchive implements Judge{
     }
 
     @Override
-    public void submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception {
+    public Long submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Submission getLastSubmission(String coderId, String password) throws Exception {
+    public Submission getLastSubmission(String coderId, String password, String ids) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -49,9 +49,11 @@ public class LiveArchive implements Judge{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public ArrayList<ProblemText> getProblemTexts(String filePath) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
+	@Override
+	public ArrayList<ProblemText> getProblemTexts() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

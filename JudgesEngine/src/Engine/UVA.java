@@ -70,12 +70,14 @@ public class UVA implements Judge {
 	}
 
 	@Override
-	public Submission getLastSubmission(String coderId, String password)
+	public Submission getLastSubmission(String coderId, String password, String ids)
 			throws Exception {
 		ArrayList<String> a = getResponse(
 				"http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
 				"username=" + coderId + "&password=" + password
-						+ "&ID=4&JID=UVA");
+						+ "&ID=4&JID=UVA&idl="+ids);
+		if(a.size() != 6)
+			return new Submission();
 		return new Submission(a.get(3), a.get(0), a.get(4), "", a.get(5),
 				a.get(1));
 	}
@@ -102,7 +104,7 @@ public class UVA implements Judge {
 	 * java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void submitProblem(String coderId, String password,
+	public Long submitProblem(String coderId, String password,
 			String problemId, String language, String code) throws Exception {
 		char[] chars = { '%', '{', '}', 
 				'|', '\\', '^',
@@ -126,9 +128,10 @@ public class UVA implements Judge {
 			}
 			code = tem;
 		}
-		getResponse("http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
-				"coderId=" + coderId + "&password=" + password + "&problemId="
-						+ problemId + "&languageId=" + language + "&code=" + code + "&ID=3&JID=UVA");
+		String ret = getResponse("http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
+				"username=" + coderId + "&password=" + password + "&problemId="
+						+ problemId + "&languageId=" + language + "&code=" + code + "&ID=3&JID=UVA").get(0);
+		return Long.parseLong(ret);
 	}
 
 	@Override
@@ -137,7 +140,7 @@ public class UVA implements Judge {
 	}
 
 	@Override
-	public ArrayList<ProblemText> getProblemTexts(String filePath)
+	public ArrayList<ProblemText> getProblemTexts()
 			throws Exception {
 		throw new UnsupportedOperationException(
 				"This function not implemented yet!");

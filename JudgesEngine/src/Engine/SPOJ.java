@@ -93,7 +93,7 @@ public class SPOJ implements Judge {
 	}
 
 	@Override
-	public Submission getLastSubmission(String coderId, String pass)
+	public Submission getLastSubmission(String coderId, String pass, String ids)
 			throws Exception {
 		Submission ret = new Submission();
 		URL siteUrl = new URL("http://www.spoj.pl/status/" + coderId + "/");
@@ -252,7 +252,7 @@ public class SPOJ implements Judge {
 	}
 
 	@Override
-	public void submitProblem(String coderId, String password,
+	public Long submitProblem(String coderId, String password,
 			String problemId, String languageId, String code)
 			throws IOException {
 		URL siteUrl = new URL("http://www.spoj.pl/submit/complete/");
@@ -298,6 +298,7 @@ public class SPOJ implements Judge {
 		out.close();
 		conn.getInputStream();
 		conn.disconnect();
+		return null;
 	}
 
 	@Override
@@ -322,7 +323,7 @@ public class SPOJ implements Judge {
 	}
 
 	@Override
-	public ArrayList<ProblemText> getProblemTexts(String filePath)
+	public ArrayList<ProblemText> getProblemTexts()
 			throws Exception {
 		ArrayList<ProblemText> ret = new ArrayList<ProblemText>();
 		String dis = "<p align=\"justify\">([\\s\\S]*?)(<h3[^<>]*>Input|<hr>)";
@@ -332,7 +333,7 @@ public class SPOJ implements Judge {
 
 		GetMethod g = new GetMethod();
 		HttpClient h = new HttpClient();
-		Scanner s = new Scanner(new File(filePath));
+		Scanner s = new Scanner(new File(""));
 		String line;
 		s.nextLine();
 		PrintWriter p = new PrintWriter(new File(

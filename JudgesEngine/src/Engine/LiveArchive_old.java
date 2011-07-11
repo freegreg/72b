@@ -53,7 +53,7 @@ public class LiveArchive_old implements Judge{
 	}
 
 	@Override
-	public Submission getLastSubmission(String coderId, String password)
+	public Submission getLastSubmission(String coderId, String password , String ids)
 			throws Exception {
 		Submission ret = new Submission();
 		URL siteUrl = new URL("http://acmicpc-live-archive.uva.es/nuevoportal/status.php?u="+coderId);
@@ -200,7 +200,7 @@ public class LiveArchive_old implements Judge{
 	}
 	// 25961XU --> my id
 	@Override
-	public void submitProblem(String coderId, String password,
+	public Long submitProblem(String coderId, String password,
 			String problemId, String languageId, String code)
 			throws IOException {
 		URL siteUrl = new URL("http://acmicpc-live-archive.uva.es/nuevoportal/mailer.php");
@@ -223,7 +223,7 @@ public class LiveArchive_old implements Judge{
 		out.close();
 		conn.getInputStream();
         conn.disconnect();
-		
+		return null;
 	}
 
     @Override
@@ -236,9 +236,12 @@ public class LiveArchive_old implements Judge{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public ArrayList<ProblemText> getProblemTexts(String filePath) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
+
+	@Override
+	public ArrayList<ProblemText> getProblemTexts() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

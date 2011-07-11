@@ -26,18 +26,18 @@ public class CodeForces implements Judge {
 	 * @see Engine.Judge#submitProblem(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void submitProblem(String coderId, String password,
+	public Long submitProblem(String coderId, String password,
 			String problemId, String languageId, String code)
 			throws IOException {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see Engine.Judge#getLastSubmission(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Submission getLastSubmission(String coderId, String password)
+	public Submission getLastSubmission(String coderId, String password , String idS)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -112,7 +112,7 @@ public class CodeForces implements Judge {
     }
 
     @Override
-    public ArrayList<ProblemText> getProblemTexts(String filePath) throws Exception {
+    public ArrayList<ProblemText> getProblemTexts() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

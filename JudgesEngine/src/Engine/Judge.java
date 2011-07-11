@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public interface Judge {
 
     /**
-     * @param filePath : The filePath that contains all the urls of the problems.
+     * 
      * @return : All the problems texts 
      * @throws Exception 
      */
-    public ArrayList<ProblemText> getProblemTexts(String filePath)throws Exception;
+    public ArrayList<ProblemText> getProblemTexts()throws Exception;
     /**
      * 
      * @param username : Username of the coder.
@@ -41,15 +41,16 @@ public interface Judge {
      * @throws IOException
      * @throws Exception 
      */
-    public void submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception;
+    public Long submitProblem(String coderId, String password, String problemId, String languageId, String code) throws IOException, Exception;
 
     /**
      * @param coderId : The ID of the coder.
      * @param password : The password of the user.
+     * @param submissionId: The submission id.
      * @return Instance of type Submission of the last submitted problem.
      * @throws Exception
      */
-    public Submission getLastSubmission(String coderId, String password) throws Exception;
+    public Submission getLastSubmission(String coderId, String password , String submissionId) throws Exception;
 
     /**
      *
