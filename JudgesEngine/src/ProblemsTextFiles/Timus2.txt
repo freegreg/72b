@@ -86,7 +86,7 @@ ______________________________________________________
 
 <DIV CLASS="problem_par"><DIV CLASS="problem_par_normal">Each line of output contains the shortest sequence of words which has been found by your program. The words are separated by single spaces. If there is no solution to the input data, the line contains text “<code>No solution.</code>”. If there are more solutions having the minimum number of words, you can choose any single one of them.</DIV></DIV><H3 CLASS="problem_subtitle">Sample</H3><TABLE CLASS="sample"><COL WIDTH="350"><COL WIDTH="350"><TR><TH>input</TH><TH>output</TH></TR><TR><TD><PRE CLASS="intable">7325189087
 5
-it
+itmple"><COL WIDTH="350"><COL WIDTH="350"><TR><TH>input</T
 your
 reality
 real
@@ -110,7 +110,7 @@ No solution.
 it
 your
 reality
-real
+realmple"><COL WIDTH="350"><COL WIDTH="350"><TR><TH>input</T
 our
 4294967296
 5
