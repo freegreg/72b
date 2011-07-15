@@ -69,10 +69,11 @@ public class Timus implements Judge {
 	@Override
 	public Submission getLastSubmission(String coderId, String password, String ids)
 			throws Exception {
-		Submission ret = new Submission();
+		Submission ret = new Submission("" , "" , "" , "" , "" , "");
+		Submission sub = new Submission("" , "" , "" , "" , "" , "");
 		URL siteUrl = new URL("http://acm.timus.ru/status.aspx?author="+coderId.substring(0 , coderId.length()-2));
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
-		conn.setRequestMethod("POST");
+		conn.setRequestMethod("GET");
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
 		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
@@ -80,33 +81,37 @@ public class Timus implements Judge {
 		out.flush();
 		out.close();
 		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		String tem = in.readLine();
-		String arr[]= {"verdict" , "language" , "runtime" , "memory" , "problem" ,"date"};
-		int [] num1 = {1 , 2 , 2 , 2 , 3 , 3};
-		int [] num2 = {1 , 1 , 1 , 1 , 3 , 9};
-		for(int i = 0 ; i < arr.length ; i ++)
-		{
-			String temp = "";
-			int ind = -1;
-			for(int k = 0 ; k < num1[i] ; k ++)
-				ind = tem.indexOf(arr[i], ++ ind) ;
-			for(int c = 0 ; c != num2[i] ; c += (tem.charAt(ind) == '>'||tem.charAt(ind)== '<') ? 1 : 0 , ind ++);
-			for( ; tem.charAt(ind) != '>' && tem.charAt(ind) != '<' ; ind ++)
-				temp += tem.charAt(ind);
-			if(i == 0)
-				ret.setStatus(temp.equals("") ? "compilation error":temp);
-			else if(i == 1)
-				ret.setLanguage(temp);
-			else if(i == 2)
-				ret.setRuntime(temp);
-			else if(i == 3)
-				ret.setMemoryUsed(temp);
-			else if(i == 4){
-				ret.setProblemId(temp.substring(0, temp.indexOf(".")));
-			}
-			else 
-				ret.setDate(temp);
-		}
+		String s = in.readLine();
+		String statusR = "<TD class=\"verdict_rj\">([^<]+)";
+		String dateR = "<TD class=\"date\"><NOBR>([^<]+)</NOBR><BR><NOBR>([^<]+)";
+		String idR = "<TD class=\"problem\"><A HREF=\"problem\\.aspx\\?space=1\\&amp\\;num=([\\d]+)";
+		String memR = "<TD class=\"memory\">([^<]*)";
+		String langR = "<TD class=\"language\">([^<]+)";
+		String runR = "<TD class=\"runtime\">([^<]*)";
+		Matcher m1 = Pattern.compile(statusR).matcher(s);
+		if(!m1.find())
+			return sub;
+		ret.setStatus(m1.group(1));
+		m1 = Pattern.compile(dateR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setDate(m1.group(2) + " " + m1.group(1));
+		m1 = Pattern.compile(runR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setRuntime(m1.group(1));
+		m1 = Pattern.compile(memR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setMemoryUsed(m1.group(1));
+		m1 = Pattern.compile(langR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setLanguage(m1.group(1));
+		m1 = Pattern.compile(idR).matcher(s);
+		if (!m1.find())
+			return sub;
+		ret.setProblemId(m1.group(1));
 		return ret;
 	}
 
