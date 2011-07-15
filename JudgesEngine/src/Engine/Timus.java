@@ -157,7 +157,7 @@ public class Timus implements Judge {
 	}
 
     @Override
-    public boolean signIn(String username, String password) throws Exception { 
+    public int signIn(String username, String password) throws Exception { 
 		URL siteUrl = new URL("http://acm.timus.ru/authedit.aspx");
 		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
 		conn.setRequestMethod("POST");
@@ -172,9 +172,9 @@ public class Timus implements Judge {
 		String regex = "<FONT COLOR=\"Red\">Invalid JUDGE_ID</FONT>";
 		while((tem = in.readLine()) != null){
 			if(tem.indexOf(regex) != -1)
-				return false;
+				return 0;
 		}
-    	return true;
+    	return 1;
     }
 
     @Override
@@ -188,13 +188,14 @@ public class Timus implements Judge {
 		ArrayList<ProblemText> ret = new ArrayList<ProblemText>();
 		String ps = "<H3 CLASS=\"problem_subtitle\">";
 		String dis = "<DIV ID=\"problem_text\">([\\s\\S]+)"+ps+"Input</H3>";
+		String all = "<DIV ID=\"problem_text\">([\\s\\S]+)<DIV CLASS=\"problem_source\">" ;
 		String input = ps + "Input</H3>([\\s\\S]+)"+ps+"Output</H3>";
-		String output = ps + "Output</H3>([\\s\\S]+)("+ps+"Samples?</H3>)?(<DIV CLASS=\"problem_source\">)?";
+		String output = ps + "Output</H3>([\\s\\S]+)"+ps+"Samples?</H3>";
 		String sampleT = ps + "Samples?</H3>([\\s\\S]+)"+ "<DIV CLASS=\"problem_source\">";
 		
 		GetMethod g = new GetMethod();
 		HttpClient h = new HttpClient();
-		Scanner s = new Scanner(new File(""));
+		Scanner s = new Scanner(new File("/home/workspace/JudgesEngine/src/ProblemsFiles/Timus.txt"));
 		String line;
 		s.nextLine();
 		PrintWriter p = new PrintWriter(new File(
@@ -209,16 +210,18 @@ public class Timus implements Judge {
 					+  line.substring(0, line.indexOf("|") - 1));
 			h.executeMethod(g);
 			String gg = g.getResponseBodyAsString();
+			gg = fixURL(gg, "http://acm.timus.ru");
 			String d = match(gg , dis, 1);
 			String i = match(gg , input, 1);
 			String o = match(gg , output, 1);
 			String ss= match(gg , sampleT, 1);
+			String a = match(gg , all , 1);
 //			System.out.println(i + " \n" + ss);
-			if (i.equals("la2a") || o.equals("la2a") ) {
+			if (i.equals("la2a") || o.equals("la2a") || ss.equals("la2a")) {
 				p.write(line.substring(0, line.indexOf("|") - 1) + "||||||false||||||\n");
 				System.err.println(line.substring(0, line.indexOf("|") - 1) + "||||||false||||||\n");
-				ret.add(new ProblemText("", "", "", "", false, d));
-				p.write(d + "\n");
+				ret.add(new ProblemText("", "", "", "", false, a));
+				p.write(a + "\n");
 			} else {
 				p.write(line.substring(0, line.indexOf("|") - 1) + "||||||true||||||\n");;
 				System.out.println(line.substring(0, line.indexOf("|") - 1) + "||||||true||||||");
@@ -245,5 +248,17 @@ public class Timus implements Judge {
 		if (m.find())
 			return m.group(g);
 		return "la2a";
+	}
+	private String fixURL(String r, String url) {
+		int i = 0;
+		String regex = "(SRC|src)=\"([^\"]+)\"";
+		Matcher m = Pattern.compile(regex).matcher(r);
+		if (m.find()) {
+			r = r.replaceAll(regex,
+					m.group(1)+"=\""+ url + m.group(2) +"\"");
+//			System.out.println(r);
+		}
+		r = r.replace("https", "http");
+		return r;
 	}
 }
