@@ -302,12 +302,12 @@ public class SPOJ implements Judge {
 	}
 
 	@Override
-	public boolean signIn(String username, String password) throws Exception {
+	public int signIn(String username, String password) throws Exception {
 		ArrayList<String> ret = getResponse(
 				"http://wahab.homeip.net:8080/JudgesEngineCore/index.jsp",
 				"username=" + username + "&password=" + password
 						+ "&ID=1&JID=SPOJ");
-		return Boolean.parseBoolean(ret.get(0));
+		return Integer.parseInt(ret.get(0));
 	}
 
 	@Override
@@ -413,4 +413,5 @@ public class SPOJ implements Judge {
 			ret.add(s.nextToken());
 		return ret;
 	}
-}
+} // 108077
+// 109053
