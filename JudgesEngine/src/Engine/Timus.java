@@ -27,6 +27,26 @@ import org.apache.commons.httpclient.methods.GetMethod;
  */
 public class Timus implements Judge {
 
+	public String getMaxSubmissionId(String id) throws IOException
+	{
+		URL siteUrl = new URL("http://acm.timus.ru/status.aspx?author=" + id.substring(0 , id.length()-2));
+		HttpURLConnection conn = (HttpURLConnection) siteUrl.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setDoOutput(true);
+		conn.setDoInput(true);
+		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+		out.writeBytes("");
+		out.flush();
+		out.close();		
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		String a = "" , tem;
+		while((tem = in.readLine()) != null)
+			a += tem + "\n";
+		conn.disconnect();
+		Matcher m = Pattern.compile("<A HREF=\"getsubmit.aspx/([\\d]+).txt\">").matcher(a);
+		m.find();
+		return m.group(1);
+	}
 	/* (non-Javadoc)
 	 * @see Engine.Judge#submitProblem(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 	 	3 --> Pascal 	
@@ -60,7 +80,7 @@ public class Timus implements Judge {
 		out.close();
 		conn.getInputStream();
 		conn.disconnect();
-		return null;
+		return Long.parseLong(getMaxSubmissionId(coderId));
 	}
 
 	/* (non-Javadoc)
@@ -82,34 +102,35 @@ public class Timus implements Judge {
 		out.close();
 		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		String s = in.readLine();
-		String statusR = "<TD class=\"verdict_rj\">([^<]+)";
+		int ind = s.indexOf(ids);
+		String statusR = "<TD class=\"verdict_[\\S]+\">([^<]+)";
 		String dateR = "<TD class=\"date\"><NOBR>([^<]+)</NOBR><BR><NOBR>([^<]+)";
 		String idR = "<TD class=\"problem\"><A HREF=\"problem\\.aspx\\?space=1\\&amp\\;num=([\\d]+)";
 		String memR = "<TD class=\"memory\">([^<]*)";
 		String langR = "<TD class=\"language\">([^<]+)";
 		String runR = "<TD class=\"runtime\">([^<]*)";
 		Matcher m1 = Pattern.compile(statusR).matcher(s);
-		if(!m1.find())
+		if(!m1.find(ind))
 			return sub;
 		ret.setStatus(m1.group(1));
 		m1 = Pattern.compile(dateR).matcher(s);
-		if (!m1.find())
+		if (!m1.find(ind))
 			return sub;
 		ret.setDate(m1.group(2) + " " + m1.group(1));
 		m1 = Pattern.compile(runR).matcher(s);
-		if (!m1.find())
+		if (!m1.find(ind))
 			return sub;
 		ret.setRuntime(m1.group(1));
 		m1 = Pattern.compile(memR).matcher(s);
-		if (!m1.find())
+		if (!m1.find(ind))
 			return sub;
 		ret.setMemoryUsed(m1.group(1));
 		m1 = Pattern.compile(langR).matcher(s);
-		if (!m1.find())
+		if (!m1.find(ind))
 			return sub;
 		ret.setLanguage(m1.group(1));
 		m1 = Pattern.compile(idR).matcher(s);
-		if (!m1.find())
+		if (!m1.find(ind))
 			return sub;
 		ret.setProblemId(m1.group(1));
 		return ret;
